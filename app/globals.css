@@ -285,6 +285,27 @@ a {
   color: var(--coral);
   border-color: var(--coral);
 }
+@media(min-width: 640px) {
+  .hero-how-link {
+    display: inline;
+    padding: 0 0 2px;
+    border: 0;
+    border-bottom: 2px solid var(--ink);
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    color: var(--dim);
+    font-family: inherit;
+    font-size: 14px;
+    letter-spacing: normal;
+  }
+  .hero-how-link:hover {
+    background: transparent;
+    color: var(--coral);
+    transform: none;
+    box-shadow: none;
+  }
+}
 .ticker {
   position: relative;
   z-index: 2;
@@ -889,6 +910,12 @@ a {
   .prize-card-wrap.card-gold, .prize-card-wrap.card-silver, .prize-card-wrap.card-bronze { transform: none; }
   .goodies-box { flex-direction: column; text-align: center; }
   .goodies-text h4, .goodies-text p { text-align: center; }
+}
+
+@media(max-width: 640px) {
+  .prize-card-wrap { width: 100%; max-width: 360px; }
+  .prize-card-top { padding: 12px; }
+  .prize-card-bottom { padding: 16px 12px; }
 }
 
 /* ---- FAQ ---- */

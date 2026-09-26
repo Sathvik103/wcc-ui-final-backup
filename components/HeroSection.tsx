@@ -43,7 +43,7 @@ function Countdown() {
 
   return (
     <div className="mt-24 max-w-xl">
-      <div className="flex items-end justify-between border-b-2 border-ink pb-2 mb-4">
+      <div className="flex items-end justify-between pb-2 mb-4">
         <span className="font-mono text-xs font-bold text-coral tracking-[0.15em] uppercase">NEXT ROUND</span>
         <div className="text-right">
           <div className="font-display text-sm font-bold tracking-tight text-ink">09 OCT 2026</div>
@@ -224,7 +224,7 @@ export default function HeroSection({ introComplete = true }: { introComplete?: 
               >
                 REGISTER FOR FREE ↗
               </a>
-              <a className="font-bold text-sm text-dim hover:text-coral transition-colors border-b-2 border-ink pb-0.5 tracking-wide" href="#format">
+              <a className="btn btn-outline hero-how-link" href="#format">
                 See how it works
               </a>
             </motion.div>
