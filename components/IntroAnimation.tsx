@@ -13,9 +13,9 @@ export default function IntroAnimation({ onComplete, isComplete }: { onComplete:
       return;
     }
 
-    const t1 = setTimeout(() => setStage(1), 300);
-    const t2 = setTimeout(() => setStage(2), 1200);
-    const t3 = setTimeout(() => onComplete(), 2500);
+    const t1 = setTimeout(() => setStage(1), 400); // 1: Logo appears
+    const t2 = setTimeout(() => setStage(2), 1200); // 2: Text reveals
+    const t3 = setTimeout(() => onComplete(), 2800); // 3: Moves to navbar and completes
 
     return () => {
       clearTimeout(t1);
@@ -31,10 +31,10 @@ export default function IntroAnimation({ onComplete, isComplete }: { onComplete:
           <motion.div
             initial={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.5, ease: "easeInOut", delay: 0.3 }}
-            className="fixed inset-0 z-[90] bg-bg flex items-center justify-center pointer-events-none"
+            transition={{ duration: 0.6, ease: "easeInOut" }}
+            className="fixed inset-0 z-[90] bg-[#f5f3ee] flex items-center justify-center pointer-events-none"
           >
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,95,64,0.06)_0%,transparent_60%)] pointer-events-none" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,95,64,0.04)_0%,transparent_60%)] pointer-events-none" />
           </motion.div>
         )}
       </AnimatePresence>
@@ -53,9 +53,9 @@ export default function IntroAnimation({ onComplete, isComplete }: { onComplete:
               <Image
                 src="/assets/images/acm_logo.png"
                 alt="ACM VNRVJIET Logo"
-                width={90}
-                height={90}
-                className="w-[90px] h-[90px] object-contain shrink-0 drop-shadow-md"
+                width={80}
+                height={80}
+                className="w-[80px] h-[80px] object-contain shrink-0"
                 priority
               />
             </motion.div>
@@ -63,15 +63,15 @@ export default function IntroAnimation({ onComplete, isComplete }: { onComplete:
             <AnimatePresence>
               {stage >= 2 && (
                 <motion.div
-                  initial={{ opacity: 0, x: -20, filter: "blur(4px)" }}
-                  animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
-                  transition={{ duration: 0.6, ease: "easeOut" }}
-                  className="text-left flex flex-col justify-center whitespace-nowrap"
+                  initial={{ opacity: 0, x: -10, filter: "blur(2px)", width: 0 }}
+                  animate={{ opacity: 1, x: 0, filter: "blur(0px)", width: "auto" }}
+                  transition={{ duration: 0.5, ease: "easeOut" }}
+                  className="text-left flex flex-col justify-center whitespace-nowrap overflow-hidden"
                 >
-                  <span className="font-display font-bold text-4xl tracking-tight text-ink leading-none mb-2 uppercase">
+                  <span className="font-display font-bold text-3xl tracking-tight text-[#1a1918] leading-none mb-1.5 uppercase">
                     ACM VNRVJIET
                   </span>
-                  <span className="font-mono text-sm font-bold text-coral tracking-widest uppercase">
+                  <span className="font-mono text-[11px] font-bold text-[#ff5f40] tracking-widest uppercase">
                     PRESENTS
                   </span>
                 </motion.div>

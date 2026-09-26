@@ -26,20 +26,20 @@ export default function GallerySection() {
   };
 
   return (
-    <section id="archive" className="section border-t-2 border-[rgba(26,25,24,0.05)] bg-bg pt-20">
-      <div className="wrap section-head reveal" style={{ textAlign: "center" }}>
-        <span className="section-badge mb-3">06 / ARCHIVE</span>
+    <section id="archive" className="section">
+      <div className="wrap section-head reveal">
+        <span className="section-badge">ARCHIVES</span>
         <h2>
           Six editions of
           <br />
-          <span className="text-coral">algorithmic excellence.</span>
+          <span style={{ color: "var(--coral)" }}>algorithmic excellence.</span>
         </h2>
-        <p className="mx-auto mt-4 max-w-xl text-dim">
-          A visual chronicle tracing WCC&apos;s evolution — from intense virtual qualifiers to the high-stakes campus finale at VNRVJIET.
+        <p>
+          A visual chronicle tracing WCC’s evolution — from intense virtual qualifiers to the high-stakes campus finale at VNRVJIET.
         </p>
       </div>
 
-      <div className="framer-gallery mt-16 pb-12">
+      <div className="framer-gallery">
         <div className="framer-strip">
           <div className="framer-track-left">
             {/* First set */}

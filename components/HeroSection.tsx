@@ -1,16 +1,16 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import React, { useState, useEffect, useRef } from "react";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import Image from "next/image";
 
 function Countdown() {
   const targetDate = new Date("2026-10-09T09:00:00+05:30").getTime();
   const [timeLeft, setTimeLeft] = useState({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
+    days: "00",
+    hours: "00",
+    minutes: "00",
+    seconds: "00",
   });
 
   useEffect(() => {
@@ -24,64 +24,137 @@ function Countdown() {
       }
 
       setTimeLeft({
-        days: Math.floor(distance / (1000 * 60 * 60 * 24)),
-        hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-        minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
-        seconds: Math.floor((distance % (1000 * 60)) / 1000),
+        days: String(Math.floor(distance / (1000 * 60 * 60 * 24))).padStart(2, "0"),
+        hours: String(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, "0"),
+        minutes: String(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, "0"),
+        seconds: String(Math.floor((distance % (1000 * 60)) / 1000)).padStart(2, "0"),
       });
     }, 1000);
 
     return () => clearInterval(timer);
   }, [targetDate]);
 
-  const formatNumber = (num: number) => num.toString().padStart(2, "0");
+  const units = [
+    { label: "DAYS", value: timeLeft.days },
+    { label: "HOURS", value: timeLeft.hours },
+    { label: "MINUTES", value: timeLeft.minutes },
+    { label: "SECONDS", value: timeLeft.seconds },
+  ];
 
   return (
-    <div className="flex flex-col gap-3 mt-10 p-6 rounded-2xl bg-ink text-bg border-2 border-ink shadow-[6px_6px_0px_rgba(26,25,24,0.15)] relative overflow-hidden max-w-xl">
-      <div className="absolute top-0 right-0 w-32 h-32 bg-[radial-gradient(circle_at_top_right,rgba(255,95,64,0.25)_0%,transparent_70%)] pointer-events-none" />
-      <div className="flex items-end justify-between border-b border-[rgba(245,243,238,0.15)] pb-3 mb-2">
-        <span className="font-mono text-xs font-bold text-coral tracking-widest uppercase">NEXT ROUND</span>
+    <div className="mt-12 max-w-xl">
+      <div className="flex items-end justify-between border-b-2 border-ink pb-2 mb-4">
+        <span className="font-mono text-xs font-bold text-coral tracking-[0.15em] uppercase">NEXT ROUND</span>
         <div className="text-right">
-          <div className="font-display text-sm font-bold tracking-tight">09 OCT 2026</div>
-          <div className="font-mono text-[10px] text-[rgba(245,243,238,0.6)]">09:00 AM IST</div>
+          <div className="font-display text-sm font-bold tracking-tight text-ink">09 OCT 2026</div>
         </div>
       </div>
       
-      <div className="flex justify-between items-center text-center">
-        <div className="flex flex-col">
-          <span className="font-display text-3xl font-extrabold text-coral leading-none">{formatNumber(timeLeft.days)}</span>
-          <span className="font-mono text-[10px] uppercase tracking-widest mt-1 opacity-70">Days</span>
-        </div>
-        <span className="text-2xl font-display font-black opacity-30 -mt-3">:</span>
-        <div className="flex flex-col">
-          <span className="font-display text-3xl font-extrabold leading-none">{formatNumber(timeLeft.hours)}</span>
-          <span className="font-mono text-[10px] uppercase tracking-widest mt-1 opacity-70">Hrs</span>
-        </div>
-        <span className="text-2xl font-display font-black opacity-30 -mt-3">:</span>
-        <div className="flex flex-col">
-          <span className="font-display text-3xl font-extrabold leading-none">{formatNumber(timeLeft.minutes)}</span>
-          <span className="font-mono text-[10px] uppercase tracking-widest mt-1 opacity-70">Min</span>
-        </div>
-        <span className="text-2xl font-display font-black opacity-30 -mt-3">:</span>
-        <div className="flex flex-col">
-          <span className="font-display text-3xl font-extrabold leading-none">{formatNumber(timeLeft.seconds)}</span>
-          <span className="font-mono text-[10px] uppercase tracking-widest mt-1 opacity-70">Sec</span>
-        </div>
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        {units.map((u, i) => (
+          <div key={i} className="flex flex-col items-center justify-center border-2 border-ink bg-white py-4 shadow-[4px_4px_0px_rgba(26,25,24,0.1)]">
+            <span className="font-display text-4xl font-extrabold text-ink leading-none tracking-tight">{u.value}</span>
+            <span className="font-mono text-[10px] uppercase tracking-widest mt-2 text-dim font-bold">{u.label}</span>
+          </div>
+        ))}
       </div>
     </div>
   );
 }
 
-export default function HeroSection({ introComplete = true }: { introComplete?: boolean }) {
+function InteractivePoster() {
+  const ref = useRef<HTMLDivElement>(null);
   
-  // Animation variants
+  // Motion values for tracking cursor
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  // Smooth springs for the 3D rotation
+  const mouseXSpring = useSpring(x, { stiffness: 150, damping: 20 });
+  const mouseYSpring = useSpring(y, { stiffness: 150, damping: 20 });
+
+  // Map mouse position to rotation degrees (-8 to 8)
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["8deg", "-8deg"]);
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-8deg", "8deg"]);
+
+  // Map to shadow offset
+  const shadowX = useTransform(mouseXSpring, [-0.5, 0.5], ["18px", "-6px"]);
+  const shadowY = useTransform(mouseYSpring, [-0.5, 0.5], ["18px", "-6px"]);
+  
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (window.matchMedia("(hover: none)").matches) return;
+    if (!ref.current) return;
+    
+    const rect = ref.current.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+    
+    // Calculate mouse position relative to center (-0.5 to 0.5)
+    const mouseX = (e.clientX - rect.left) / width - 0.5;
+    const mouseY = (e.clientY - rect.top) / height - 0.5;
+    
+    x.set(mouseX);
+    y.set(mouseY);
+  };
+
+  const handleMouseLeave = () => {
+    // Reset to neutral
+    x.set(0);
+    y.set(0);
+  };
+
+  return (
+    <div className="perspective-[1000px] w-full max-w-[420px] mx-auto md:ml-auto">
+      <motion.div
+        ref={ref}
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        style={{
+          rotateX,
+          rotateY,
+          transformStyle: "preserve-3d",
+        }}
+        className="relative w-full aspect-[4/5] bg-white border-[3px] border-ink"
+      >
+        <motion.div 
+          className="absolute inset-0 bg-ink -z-10"
+          style={{
+            x: shadowX,
+            y: shadowY,
+            opacity: 0.15
+          }}
+        />
+        
+        <Image 
+          src="/assets/images/poster_6_0.png" 
+          alt="WCC 6.0 Official Poster" 
+          fill 
+          className="object-cover"
+          priority
+          sizes="(max-width: 768px) 100vw, 420px"
+        />
+        
+        {/* Subtle glare effect */}
+        <motion.div 
+          className="absolute inset-0 bg-gradient-to-tr from-transparent via-[rgba(255,255,255,0.2)] to-transparent pointer-events-none"
+          style={{
+            x: useTransform(mouseXSpring, [-0.5, 0.5], ["-50%", "50%"]),
+            y: useTransform(mouseYSpring, [-0.5, 0.5], ["-50%", "50%"]),
+          }}
+        />
+      </motion.div>
+    </div>
+  );
+}
+
+export default function HeroSection({ introComplete = true }: { introComplete?: boolean }) {
   const containerVariants = {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
       transition: {
         staggerChildren: 0.15,
-        delayChildren: 0.2, // Wait a bit after intro finishes
+        delayChildren: 0.2,
       }
     }
   };
@@ -96,18 +169,16 @@ export default function HeroSection({ introComplete = true }: { introComplete?: 
   };
 
   const posterVariants = {
-    hidden: { opacity: 0, y: 50, rotate: -2 },
+    hidden: { opacity: 0, y: 50 },
     show: { 
       opacity: 1, 
       y: 0, 
-      rotate: 0,
       transition: { duration: 1, ease: [0.16, 1, 0.3, 1] as const, delay: 0.4 } 
     }
   };
 
   return (
-    <section id="hero" className="relative min-h-[100svh] flex flex-col justify-center overflow-hidden pt-24 pb-16 lg:pt-32">
-      {/* Background elements animate in only after intro is complete */}
+    <section id="hero" className="relative min-h-[100svh] flex flex-col justify-center overflow-hidden pt-32 pb-24">
       <motion.div 
         initial={{ opacity: 0 }} 
         animate={{ opacity: introComplete ? 1 : 0 }} 
@@ -122,7 +193,7 @@ export default function HeroSection({ introComplete = true }: { introComplete?: 
       />
       
       <div className="wrap relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-10 items-center">
           
           <motion.div 
             className="lg:col-span-7 flex flex-col items-start"
@@ -130,30 +201,30 @@ export default function HeroSection({ introComplete = true }: { introComplete?: 
             initial="hidden"
             animate={introComplete ? "show" : "hidden"}
           >
-            <motion.div variants={itemVariants} className="eyebrow mb-4 inline-block font-mono text-xs font-bold text-ink tracking-[0.12em] uppercase border-l-2 border-coral pl-3">
+            <motion.div variants={itemVariants} className="mb-5 inline-block font-mono text-[11px] font-bold text-ink tracking-[0.15em] uppercase border-l-2 border-coral pl-4 py-1">
               ACM VNRVJIET PRESENTS — SIXTH FLAGSHIP EDITION
             </motion.div>
             
-            <motion.h1 variants={itemVariants} className="hero-title mb-6 text-[clamp(48px,8vw,110px)] font-display font-extrabold leading-[0.92] tracking-[-0.02em] text-ink">
+            <motion.h1 variants={itemVariants} className="mb-6 text-[clamp(44px,7.5vw,100px)] font-display font-extrabold leading-[0.9] tracking-[-0.02em] text-ink uppercase">
               WINTER<br />
               CODING <span className="text-transparent" style={{ WebkitTextStroke: "2px var(--ink)" }}>CONTEST</span><br />
               <span className="text-coral">6.0</span>
             </motion.h1>
             
-            <motion.p variants={itemVariants} className="hero-sub max-w-[540px] text-lg text-dim leading-relaxed font-medium mb-8">
-              Code, Compile and Compete at National Level. A four-stage coding competition designed to test problem-solving, algorithmic thinking, and coding skills.
+            <motion.p variants={itemVariants} className="max-w-[500px] text-[17px] text-dim leading-[1.6] font-medium mb-10">
+              A national algorithmic arena. Two rounds, one campus finale, and a pipeline built to find India's sharpest problem-solvers.
             </motion.p>
             
-            <motion.div variants={itemVariants} className="hero-cta flex flex-wrap gap-5 items-center w-full">
+            <motion.div variants={itemVariants} className="flex flex-wrap gap-6 items-center w-full">
               <a
-                className="btn btn-solid px-8 py-4 bg-ink text-bg font-bold font-display text-[15px] border-2 border-ink shadow-[5px_5px_0px_var(--coral)] hover:shadow-[7px_7px_0px_var(--coral)] hover:-translate-y-1 transition-all uppercase tracking-wide"
+                className="btn btn-solid px-8 py-4 bg-ink text-bg font-bold font-display text-[14px] border-[3px] border-ink shadow-[4px_4px_0px_var(--coral)] hover:shadow-[6px_6px_0px_var(--coral)] hover:-translate-y-1 transition-all uppercase tracking-[0.1em]"
                 href="https://unstop.com"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 REGISTER FOR FREE ↗
               </a>
-              <a className="link-arrow font-bold text-sm text-dim hover:text-coral transition-colors border-b-2 border-ink pb-0.5" href="#format">
+              <a className="font-bold text-sm text-dim hover:text-coral transition-colors border-b-2 border-ink pb-0.5 tracking-wide" href="#format">
                 See how it works
               </a>
             </motion.div>
@@ -164,21 +235,12 @@ export default function HeroSection({ introComplete = true }: { introComplete?: 
           </motion.div>
 
           <motion.div 
-            className="lg:col-span-5 relative flex justify-center lg:justify-end"
+            className="lg:col-span-5 relative flex justify-center lg:justify-end w-full"
             initial="hidden"
             animate={introComplete ? "show" : "hidden"}
             variants={posterVariants}
           >
-            <div className="relative w-full max-w-[420px] aspect-[4/5] rounded-3xl overflow-hidden border-2 border-ink shadow-[12px_12px_0px_rgba(26,25,24,0.08)] bg-white group">
-              <Image 
-                src="/assets/images/poster_6_0.png" 
-                alt="WCC 6.0 Official Poster" 
-                fill 
-                className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                priority
-              />
-              {/* Fallback overlay in case the poster image isn't loaded correctly, but the prompt says 6.0 poster is added so we just use the real one */}
-            </div>
+            <InteractivePoster />
           </motion.div>
           
         </div>

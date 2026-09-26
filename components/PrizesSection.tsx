@@ -4,81 +4,209 @@ import React from "react";
 
 export default function PrizesSection() {
   return (
-    <section id="prizes" className="section bg-bg border-t-2 border-[rgba(26,25,24,0.05)] pt-20 pb-24">
+    <section id="prizes" className="section" style={{ marginTop: "-50px" }}>
       <div className="wrap">
-        <div className="section-head reveal" style={{ textAlign: "center" }}>
-          <span className="section-badge mb-3">06 / PRIZES</span>
-          <h2>Honors &amp; Awards</h2>
-          <p className="mx-auto mt-4 max-w-xl text-dim">
-            The national podium. Verified cash rewards, exclusive ACM accolades, and recognition for the top algorithmic minds.
-          </p>
+        <div className="section-head reveal">
+          <span className="prizes-header-badge">PRIZES</span>
+          <h2>Recognitions &amp; rewards.</h2>
+          <p>A prize pool of ₹50,000+ awarded to top national algorithmic problem-solvers.</p>
         </div>
 
-        {/* Podium Layout */}
-        <div className="flex flex-col md:flex-row justify-center items-end gap-6 mt-16 max-w-5xl mx-auto reveal mb-8">
-          
-          {/* 1st Runner Up */}
-          <div className="w-full md:w-[28%] border-2 border-ink bg-white flex flex-col justify-end p-6 md:p-8 min-h-[220px] shadow-[6px_6px_0px_rgba(26,25,24,0.08)] order-2 md:order-1 relative">
-            <div className="absolute top-0 right-0 w-full h-1 bg-[rgba(26,25,24,0.1)]" />
-            <div className="font-mono text-[10px] font-bold text-dim tracking-[0.15em] uppercase mb-1">RANK 02</div>
-            <h3 className="font-display font-extrabold text-2xl text-ink leading-tight mb-4">
-              FIRST<br />RUNNER-UP
-            </h3>
-            <div className="font-display text-[32px] font-black text-ink tracking-tight mt-auto">
-              ₹15,000<span className="text-coral">+</span>
+        {/* PODIUM: silver(left) | gold(center) | bronze(right) */}
+        <div className="prizes-stage reveal">
+          {/* 2ND PLACE (LEFT) */}
+          <div className="prize-card-wrap card-silver">
+            <div className="prize-card">
+              <div className="prize-card-top">
+                <div className="prize-icon-wrap">
+                  <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="24" cy="28" r="14" stroke="#7a7a8a" strokeWidth="2.5" />
+                    <circle cx="24" cy="28" r="10" fill="#e8e8ee" stroke="#7a7a8a" strokeWidth="1.5" />
+                    <text
+                      x="24"
+                      y="33"
+                      textAnchor="middle"
+                      fontFamily="Space Grotesk, sans-serif"
+                      fontWeight="700"
+                      fontSize="12"
+                      fill="#4a4a5a"
+                    >
+                      2
+                    </text>
+                    <path
+                      d="M17 16 L13 6 L20 10 L24 4 L28 10 L35 6 L31 16"
+                      stroke="#7a7a8a"
+                      strokeWidth="2"
+                      strokeLinejoin="round"
+                      fill="#d0d0dc"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <div className="prize-card-bottom">
+                <div className="prize-rank-tag">1ST RUNNERS UP</div>
+                <div className="prize-title">
+                  SECOND
+                  <br />
+                  PRIZE
+                </div>
+                <div className="prize-amount">₹15,000</div>
+              </div>
             </div>
+            <div className="prize-sublabel">1ST RUNNERS UP</div>
           </div>
 
-          {/* Winner */}
-          <div className="w-full md:w-[36%] border-2 border-ink bg-ink flex flex-col justify-end p-8 md:p-10 min-h-[300px] shadow-[8px_8px_0px_var(--coral)] order-1 md:order-2 relative z-10 -mx-2 md:mx-0">
-            <div className="absolute top-0 right-0 w-full h-1 bg-coral" />
-            <div className="font-mono text-[11px] font-bold text-[rgba(245,243,238,0.7)] tracking-[0.15em] uppercase mb-2">RANK 01</div>
-            <h3 className="font-display font-extrabold text-[40px] text-bg leading-[0.95] tracking-tight mb-8">
-              CHAMPION<br />TEAM
-            </h3>
-            <div className="font-display text-[48px] font-black text-coral tracking-tight mt-auto">
-              ₹25,000<span className="text-bg opacity-50">+</span>
+          {/* 1ST PLACE (CENTER) */}
+          <div className="prize-card-wrap card-gold">
+            <div className="prize-card">
+              <div className="prize-card-top">
+                <div className="prize-icon-wrap">
+                  <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M16 6H32V26C32 31.523 28.418 35 24 35C19.582 35 16 31.523 16 26V6Z"
+                      fill="#fde68a"
+                      stroke="#c9960a"
+                      strokeWidth="2"
+                      strokeLinejoin="round"
+                    />
+                    <path d="M16 10H10C10 10 8 20 16 22" stroke="#c9960a" strokeWidth="2" strokeLinecap="round" />
+                    <path d="M32 10H38C38 10 40 20 32 22" stroke="#c9960a" strokeWidth="2" strokeLinecap="round" />
+                    <rect x="20" y="35" width="8" height="4" fill="#c9960a" rx="1" />
+                    <rect x="15" y="39" width="18" height="3" fill="#c9960a" rx="1.5" />
+                    <circle cx="24" cy="20" r="4" fill="#c9960a" opacity="0.35" />
+                    <path
+                      d="M22 20 L23.2 22.4 L26 22.8 L24 24.7 L24.4 27.5 L22 26.2 L19.6 27.5 L20 24.7 L18 22.8 L20.8 22.4Z"
+                      fill="#c9960a"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <div className="prize-card-bottom">
+                <div className="prize-rank-tag">WINNERS</div>
+                <div className="prize-title">
+                  FIRST
+                  <br />
+                  PRIZE
+                </div>
+                <div className="prize-amount">₹25,000</div>
+              </div>
             </div>
+            <div className="prize-sublabel">WINNERS</div>
           </div>
 
-          {/* 2nd Runner Up */}
-          <div className="w-full md:w-[28%] border-2 border-ink bg-white flex flex-col justify-end p-6 md:p-8 min-h-[190px] shadow-[6px_6px_0px_rgba(26,25,24,0.08)] order-3 relative">
-            <div className="absolute top-0 right-0 w-full h-1 bg-[rgba(26,25,24,0.1)]" />
-            <div className="font-mono text-[10px] font-bold text-dim tracking-[0.15em] uppercase mb-1">RANK 03</div>
-            <h3 className="font-display font-extrabold text-2xl text-ink leading-tight mb-4">
-              SECOND<br />RUNNER-UP
-            </h3>
-            <div className="font-display text-[28px] font-black text-ink tracking-tight mt-auto">
-              ₹10,000<span className="text-coral">+</span>
+          {/* 3RD PLACE (RIGHT) */}
+          <div className="prize-card-wrap card-bronze">
+            <div className="prize-card">
+              <div className="prize-card-top">
+                <div className="prize-icon-wrap">
+                  <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="24" cy="28" r="14" stroke="#c96a3a" strokeWidth="2.5" />
+                    <circle cx="24" cy="28" r="10" fill="#ffe5d4" stroke="#c96a3a" strokeWidth="1.5" />
+                    <text
+                      x="24"
+                      y="33"
+                      textAnchor="middle"
+                      fontFamily="Space Grotesk, sans-serif"
+                      fontWeight="700"
+                      fontSize="12"
+                      fill="#a0502a"
+                    >
+                      3
+                    </text>
+                    <path
+                      d="M17 16 L13 6 L20 10 L24 4 L28 10 L35 6 L31 16"
+                      stroke="#c96a3a"
+                      strokeWidth="2"
+                      strokeLinejoin="round"
+                      fill="#ffd4bc"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <div className="prize-card-bottom">
+                <div className="prize-rank-tag">2ND RUNNERS UP</div>
+                <div className="prize-title">
+                  THIRD
+                  <br />
+                  PRIZE
+                </div>
+                <div className="prize-amount">₹10,000</div>
+              </div>
             </div>
+            <div className="prize-sublabel">2ND RUNNERS UP</div>
           </div>
-
         </div>
 
-        {/* Consolation / Special Merit */}
-        <div className="flex flex-col md:flex-row justify-center gap-6 max-w-4xl mx-auto reveal mt-12 pt-10 border-t border-[rgba(26,25,24,0.1)]">
-          <div className="flex-1 border border-ink bg-transparent p-6 rounded-lg flex items-center justify-between">
-            <div>
-              <div className="font-mono text-[10px] font-bold text-coral tracking-widest uppercase mb-1">SPECIAL MERIT</div>
-              <h4 className="font-display font-bold text-lg text-ink">RANK 04</h4>
+        {/* CONSOLATION PRIZES ROW */}
+        <div className="consolation-row reveal">
+          <div className="consolation-card">
+            <div className="consolation-icon">
+              <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M16 3L19.8 12.2L30 13.1L22.6 19.6L24.9 29.7L16 24.5L7.1 29.7L9.4 19.6L2 13.1L12.2 12.2Z"
+                  stroke="var(--ink)"
+                  strokeWidth="2"
+                  strokeLinejoin="round"
+                  fill="#ffffff"
+                />
+              </svg>
             </div>
-            <div className="text-right">
-              <div className="text-sm text-dim font-medium">Cash Reward</div>
-              <div className="text-xs text-dim opacity-70">Certificate & Accolades</div>
+            <div className="consolation-body">
+              <div className="consolation-tag">★ SPECIAL MERIT · RANK 4</div>
+              <h4>Consolation Prize 1</h4>
+              <p>Cash reward, Certificate of Merit &amp; official ACM accolades.</p>
             </div>
           </div>
-          <div className="flex-1 border border-ink bg-transparent p-6 rounded-lg flex items-center justify-between">
-            <div>
-              <div className="font-mono text-[10px] font-bold text-coral tracking-widest uppercase mb-1">SPECIAL MERIT</div>
-              <h4 className="font-display font-bold text-lg text-ink">RANK 05</h4>
+
+          <div className="consolation-card">
+            <div className="consolation-icon">
+              <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M16 3L19.8 12.2L30 13.1L22.6 19.6L24.9 29.7L16 24.5L7.1 29.7L9.4 19.6L2 13.1L12.2 12.2Z"
+                  stroke="var(--ink)"
+                  strokeWidth="2"
+                  strokeLinejoin="round"
+                  fill="#ffffff"
+                />
+              </svg>
             </div>
-            <div className="text-right">
-              <div className="text-sm text-dim font-medium">Cash Reward</div>
-              <div className="text-xs text-dim opacity-70">Certificate & Accolades</div>
+            <div className="consolation-body">
+              <div className="consolation-tag">★ SPECIAL MERIT · RANK 5</div>
+              <h4>Consolation Prize 2</h4>
+              <p>Cash reward, Certificate of Merit &amp; official ACM accolades.</p>
             </div>
           </div>
         </div>
 
+        {/* GOODIES BOX */}
+        <div className="goodies-box reveal">
+          <div className="goodies-text">
+            <h4>ANYTHING ELSE?</h4>
+            <p>
+              Absolutely! All selected campus finalists receive exclusive WCC developer goodies — T-Shirts, stickers, swag kits &amp; Certificates of Merit.
+            </p>
+          </div>
+          <div className="goodies-badge">
+            <svg
+              width="14"
+              height="14"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              style={{ display: "inline", verticalAlign: "middle", marginRight: "5px" }}
+            >
+              <polyline points="20 12 20 22 4 22 4 12" />
+              <rect x="2" y="7" width="20" height="5" />
+              <line x1="12" y1="22" x2="12" y2="7" />
+              <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z" />
+              <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z" />
+            </svg>
+            GOODIES &amp; SWAG KITS
+          </div>
+        </div>
       </div>
     </section>
   );

@@ -1,128 +1,224 @@
 "use client";
 
-import React, { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import React, { useEffect, useRef } from "react";
 
 export default function StagesSection() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start 80%", "end 60%"]
-  });
-  
-  // For desktop horizontal line
-  const scaleX = useTransform(scrollYProgress, [0, 1], [0, 1]);
-  // For mobile vertical line
-  const scaleY = useTransform(scrollYProgress, [0, 1], [0, 1]);
+  const mapSectionRef = useRef<HTMLDivElement>(null);
+  const pathRef = useRef<SVGPathElement>(null);
+  const dotRef = useRef<SVGCircleElement>(null);
+
+  useEffect(() => {
+    const mapSection = mapSectionRef.current;
+    const pathEl = pathRef.current;
+    const dotEl = dotRef.current;
+    if (!mapSection || !pathEl) return;
+
+    let pathLen = 0;
+    try {
+      pathLen = pathEl.getTotalLength();
+      pathEl.style.strokeDasharray = `${pathLen}`;
+      pathEl.style.strokeDashoffset = `${pathLen}`;
+    } catch {
+      pathLen = 2500;
+    }
+
+    const nodeCards = mapSection.querySelectorAll(".map-node-card");
+
+    const updateMap = () => {
+      if (!mapSection || pathLen === 0) return;
+
+      const mapRect = mapSection.getBoundingClientRect();
+      const viewH = window.innerHeight;
+      const triggerY = viewH * 0.5;
+
+      const scrolledIn = triggerY - mapRect.top;
+      const totalDist = mapSection.offsetHeight;
+      const progress = Math.max(0, Math.min(1, scrolledIn / totalDist));
+
+      const revealLen = progress * pathLen;
+      pathEl.style.strokeDashoffset = `${pathLen - revealLen}`;
+
+      if (dotEl) {
+        if (progress > 0.005) {
+          dotEl.setAttribute("opacity", "1");
+          try {
+            const pt = pathEl.getPointAtLength(Math.min(revealLen, pathLen - 1));
+            dotEl.setAttribute("cx", `${pt.x}`);
+            dotEl.setAttribute("cy", `${pt.y}`);
+          } catch {}
+        } else {
+          dotEl.setAttribute("opacity", "0");
+        }
+      }
+
+      nodeCards.forEach((card, index) => {
+        const cardRect = card.getBoundingClientRect();
+        const cardCenter = cardRect.top + cardRect.height / 2;
+        if (cardCenter <= triggerY + 60 || progress >= (index + 1) * 0.22) {
+          card.classList.add("node-revealed");
+        }
+      });
+    };
+
+    requestAnimationFrame(updateMap);
+    window.addEventListener("scroll", updateMap, { passive: true });
+    window.addEventListener("resize", updateMap, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", updateMap);
+      window.removeEventListener("resize", updateMap);
+    };
+  }, []);
 
   return (
-    <section id="format" className="section bg-bg border-t border-[rgba(26,25,24,0.05)] pt-24 pb-28">
+    <section id="format" className="section">
       <div className="wrap">
-        <div className="section-head reveal" style={{ textAlign: "center", marginBottom: "80px" }}>
-          <span className="section-badge mb-3">06 / FORMAT</span>
+        <div className="section-head reveal">
+          <span className="section-badge">CONTEST ARCHITECTURE</span>
           <h2>How WCC 6.0 works.</h2>
-          <p className="mx-auto mt-4 max-w-xl text-dim">
-            A four-stage coding competition designed to test problem-solving, algorithmic thinking, and coding skills.
-          </p>
+          <p>A four-stage pipeline testing algorithmic reasoning end to end.</p>
         </div>
 
-        <div className="relative" ref={containerRef}>
-          {/* Desktop Horizontal Line */}
-          <div className="hidden md:block absolute top-[28px] left-0 right-0 h-1 bg-[rgba(255,95,64,0.1)] rounded-full">
-            <motion.div 
-              className="h-full bg-coral origin-left rounded-full"
-              style={{ scaleX }}
+        <div className="curved-map-container" id="contestMap" ref={mapSectionRef}>
+          <svg className="curved-map-svg" viewBox="0 0 960 950" fill="none" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="mapGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stopColor="var(--coral)" />
+                <stop offset="100%" stopColor="#ff855f" />
+              </linearGradient>
+            </defs>
+
+            {/* Ghost path */}
+            <path
+              id="map-path-ghost"
+              d="M 220 90
+                 C 220 215, 740 215, 740 340
+                 C 740 465, 220 465, 220 590
+                 C 220 715, 740 715, 740 840"
+              stroke="rgba(26,25,24,0.14)"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeDasharray="7 5"
+              fill="none"
             />
-          </div>
-          
-          {/* Mobile Vertical Line */}
-          <div className="md:hidden absolute top-0 bottom-0 left-[28px] w-1 bg-[rgba(255,95,64,0.1)] rounded-full">
-            <motion.div 
-              className="w-full bg-coral origin-top rounded-full"
-              style={{ scaleY }}
+
+            {/* Animated reveal path */}
+            <path
+              ref={pathRef}
+              id="map-path"
+              d="M 220 90
+                 C 220 215, 740 215, 740 340
+                 C 740 465, 220 465, 220 590
+                 C 220 715, 740 715, 740 840"
+              stroke="var(--coral)"
+              strokeWidth="3.5"
+              strokeLinecap="round"
+              fill="none"
+              style={{ strokeDasharray: 2500, strokeDashoffset: 2500 }}
             />
-          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-6 relative z-10">
-            {/* Stage 1 */}
-            <div className="flex flex-row md:flex-col items-start gap-6 md:gap-4 relative group">
-              <div className="flex-shrink-0 w-14 h-14 md:w-16 md:h-16 rounded-full bg-white border-4 border-bg flex items-center justify-center font-display font-bold text-xl text-ink shadow-[0_0_0_2px_rgba(255,95,64,0.2)] group-hover:shadow-[0_0_0_2px_var(--coral)] transition-all z-10">
-                01
-              </div>
-              <div>
-                <div className="font-mono text-[10px] font-bold text-coral tracking-widest uppercase mb-2 md:mt-4">
-                  UNTIL 24 SEPT
+            {/* Tip dot */}
+            <circle
+              ref={dotRef}
+              id="map-dot"
+              cx="220"
+              cy="90"
+              r="6"
+              fill="#fff"
+              stroke="var(--coral)"
+              strokeWidth="2.5"
+              opacity="0"
+            />
+
+            {/* Static anchor circles */}
+            <circle cx="220" cy="90" r="5" fill="var(--coral)" opacity="0.3" />
+            <circle cx="740" cy="340" r="5" fill="var(--coral)" opacity="0.3" />
+            <circle cx="220" cy="590" r="5" fill="var(--coral)" opacity="0.3" />
+            <circle cx="740" cy="840" r="5" fill="var(--coral)" opacity="0.3" />
+          </svg>
+
+          <div className="curved-node-grid">
+            {/* STAGE 01 */}
+            <div className="curved-node node-left">
+              <div className="map-node-card" data-map-node="0">
+                <div className="curved-card">
+                  <span className="map-step-badge">01</span>
+                  <div className="curved-pin">
+                    <span className="dot"></span>01 · NATIONAL REGISTRATION
+                  </div>
+                  <h3>National Registration</h3>
+                  <p>Register solo or in duos on Unstop. Round 1 is completely free for every student in India.</p>
+                  <div className="curved-date">ELIGIBILITY · ALL UG &amp; PG STUDENTS · UNTIL 24 SEPT</div>
+                  <div>
+                    <a className="map-link-btn" href="https://unstop.com" target="_blank" rel="noopener noreferrer">
+                      REGISTER ON UNSTOP →
+                    </a>
+                  </div>
                 </div>
-                <h3 className="font-display font-bold text-xl md:text-2xl text-ink leading-tight mb-2">
-                  National Registration
-                </h3>
-                <p className="text-sm text-dim leading-relaxed mb-4">
-                  Register on Unstop as a solo coder or with one teammate. Round 1 registration is completely free and open to students across India.
-                </p>
-                <a className="inline-block font-mono text-[11px] font-bold text-ink hover:text-coral border-b border-ink hover:border-coral pb-0.5 tracking-wider transition-colors" href="https://unstop.com" target="_blank" rel="noopener noreferrer">
-                  REGISTER NOW ↗
-                </a>
+                <div className="card-mask"></div>
               </div>
             </div>
 
-            {/* Stage 2 */}
-            <div className="flex flex-row md:flex-col items-start gap-6 md:gap-4 relative group">
-              <div className="flex-shrink-0 w-14 h-14 md:w-16 md:h-16 rounded-full bg-white border-4 border-bg flex items-center justify-center font-display font-bold text-xl text-ink shadow-[0_0_0_2px_rgba(255,95,64,0.2)] group-hover:shadow-[0_0_0_2px_var(--coral)] transition-all z-10">
-                02
-              </div>
-              <div>
-                <div className="font-mono text-[10px] font-bold text-coral tracking-widest uppercase mb-2 md:mt-4">
-                  09 OCT 2026
+            {/* STAGE 02 */}
+            <div className="curved-node node-right">
+              <div className="map-node-card" data-map-node="1">
+                <div className="curved-card">
+                  <span className="map-step-badge">02</span>
+                  <div className="curved-pin">
+                    <span className="dot"></span>02 · VIRTUAL ARENA
+                  </div>
+                  <h3>Round 1 — Virtual Arena</h3>
+                  <p>Proctored on HackerRank, 9:00 AM–4:40 PM. Data Structures, DP, Math and Graph problems.</p>
+                  <div className="curved-date">MODE · FULLY ONLINE · 09 OCT 2026</div>
+                  <div>
+                    <a className="map-link-btn" href="https://hackerrank.com" target="_blank" rel="noopener noreferrer">
+                      HACKERRANK PORTAL →
+                    </a>
+                  </div>
                 </div>
-                <h3 className="font-display font-bold text-xl md:text-2xl text-ink leading-tight mb-2">
-                  Round 1
-                </h3>
-                <p className="text-sm text-dim leading-relaxed mb-4">
-                  Taking it a step further with HackerRank's proctored arena, with problems ranging from dynamic programming and graphs to game theory.
-                </p>
-                <a className="inline-block font-mono text-[11px] font-bold text-ink hover:text-coral border-b border-ink hover:border-coral pb-0.5 tracking-wider transition-colors" href="https://hackerrank.com" target="_blank" rel="noopener noreferrer">
-                  HACKERRANK PORTAL ↗
-                </a>
+                <div className="card-mask"></div>
               </div>
             </div>
 
-            {/* Stage 3 */}
-            <div className="flex flex-row md:flex-col items-start gap-6 md:gap-4 relative group">
-              <div className="flex-shrink-0 w-14 h-14 md:w-16 md:h-16 rounded-full bg-white border-4 border-bg flex items-center justify-center font-display font-bold text-xl text-ink shadow-[0_0_0_2px_rgba(255,95,64,0.2)] group-hover:shadow-[0_0_0_2px_var(--coral)] transition-all z-10">
-                03
-              </div>
-              <div>
-                <div className="font-mono text-[10px] font-bold text-coral tracking-widest uppercase mb-2 md:mt-4">
-                  10 OCT 2026
+            {/* STAGE 03 */}
+            <div className="curved-node node-left">
+              <div className="map-node-card" data-map-node="2">
+                <div className="curved-card">
+                  <span className="map-step-badge">03</span>
+                  <div className="curved-pin">
+                    <span className="dot"></span>03 · AUDIT &amp; SHORTLISTING
+                  </div>
+                  <h3>Audit &amp; Shortlisting</h3>
+                  <p>Automated plagiarism and similarity audits. Top 150+ coders receive campus invitations.</p>
+                  <div className="curved-date">MERIT RANKLIST PUBLISHED · 10 OCT 2026</div>
                 </div>
-                <h3 className="font-display font-bold text-xl md:text-2xl text-ink leading-tight mb-2">
-                  Audit & Shortlisting
-                </h3>
-                <p className="text-sm text-dim leading-relaxed mb-4">
-                  Automated plagiarism and similarity audits. Top 150+ coders receive campus invitations for the grand finale.
-                </p>
+                <div className="card-mask"></div>
               </div>
             </div>
 
-            {/* Stage 4 */}
-            <div className="flex flex-row md:flex-col items-start gap-6 md:gap-4 relative group">
-              <div className="flex-shrink-0 w-14 h-14 md:w-16 md:h-16 rounded-full bg-coral border-4 border-bg flex items-center justify-center font-display font-bold text-xl text-bg shadow-[0_0_0_2px_var(--coral)] transition-all z-10">
-                04
-              </div>
-              <div>
-                <div className="font-mono text-[10px] font-bold text-coral tracking-widest uppercase mb-2 md:mt-4">
-                  11 OCT 2026
+            {/* STAGE 04 */}
+            <div className="curved-node node-right">
+              <div className="map-node-card" data-map-node="3">
+                <div className="curved-card">
+                  <span className="map-step-badge">04</span>
+                  <div className="curved-pin">
+                    <span className="dot"></span>04 · CAMPUS FINALE
+                  </div>
+                  <h3>Round 2 — Campus Finale</h3>
+                  <p>In-person battle at VNRVJIET&apos;s HPC labs, followed by the valedictory awards ceremony.</p>
+                  <div className="curved-date">LOCATION · VNRVJIET, HYDERABAD · 11 OCT 2026</div>
+                  <div>
+                    <a
+                      className="map-link-btn"
+                      href="https://maps.google.com/?q=VNRVJIET+Hyderabad"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      VNRVJIET CAMPUS MAP →
+                    </a>
+                  </div>
                 </div>
-                <h3 className="font-display font-bold text-xl md:text-2xl text-ink leading-tight mb-2">
-                  Round 2
-                </h3>
-                <p className="text-sm text-dim leading-relaxed mb-4">
-                  In-person battle at VNRVJIET's HPC labs, followed by the valedictory awards ceremony to crown the champions.
-                </p>
-                <a className="inline-block font-mono text-[11px] font-bold text-ink hover:text-coral border-b border-ink hover:border-coral pb-0.5 tracking-wider transition-colors" href="https://maps.google.com/?q=VNRVJIET+Hyderabad" target="_blank" rel="noopener noreferrer">
-                  VNRVJIET CAMPUS ↗
-                </a>
+                <div className="card-mask"></div>
               </div>
             </div>
           </div>
