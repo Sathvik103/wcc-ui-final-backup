@@ -7,8 +7,9 @@ const photos = [
   { img: "/assets/images/arena.jpg", alt: "WCC Arena" },
   { img: "/assets/images/trophy.jpg", alt: "WCC Trophy" },
   { img: "/assets/images/team.jpg", alt: "WCC Team" },
-  { img: "/assets/images/arena.jpg", alt: "WCC Arena 2" },
-  { img: "/assets/images/trophy.jpg", alt: "WCC Trophy 2" },
+  { img: "/assets/images/wcc_arena_photo_1790406014428.jpg", alt: "WCC Arena Alternate" },
+  { img: "/assets/images/wcc_trophy_photo_1790406042341.jpg", alt: "WCC Trophy Alternate" },
+  { img: "/assets/images/wcc_team_photo_1790406068703.jpg", alt: "WCC Team Alternate" },
 ];
 
 export default function GallerySection() {
@@ -25,20 +26,20 @@ export default function GallerySection() {
   };
 
   return (
-    <section id="archive" className="section">
-      <div className="wrap section-head reveal">
-        <span className="section-badge">ARCHIVES</span>
+    <section id="archive" className="section border-t-2 border-[rgba(26,25,24,0.05)] bg-bg pt-20">
+      <div className="wrap section-head reveal" style={{ textAlign: "center" }}>
+        <span className="section-badge mb-3">06 / ARCHIVE</span>
         <h2>
-          Five editions of
+          Six editions of
           <br />
-          <span style={{ color: "var(--coral)" }}>algorithmic excellence.</span>
+          <span className="text-coral">algorithmic excellence.</span>
         </h2>
-        <p>
-          A visual chronicle tracing WCC’s evolution — from intense virtual qualifiers to the high-stakes campus finale at VNRVJIET.
+        <p className="mx-auto mt-4 max-w-xl text-dim">
+          A visual chronicle tracing WCC&apos;s evolution — from intense virtual qualifiers to the high-stakes campus finale at VNRVJIET.
         </p>
       </div>
 
-      <div className="framer-gallery">
+      <div className="framer-gallery mt-16 pb-12">
         <div className="framer-strip">
           <div className="framer-track-left">
             {/* First set */}

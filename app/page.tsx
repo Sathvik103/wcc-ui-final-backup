@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
+import ScaleSection from "@/components/ScaleSection";
 import EditionsSection from "@/components/EditionsSection";
 import GallerySection from "@/components/GallerySection";
 import StagesSection from "@/components/StagesSection";
@@ -47,9 +48,7 @@ export default function Home() {
         <div className="bg-icon">{"/*"}</div>
       </div>
 
-      {!introComplete && (
-        <IntroAnimation onComplete={() => setIntroComplete(true)} />
-      )}
+      <IntroAnimation onComplete={() => setIntroComplete(true)} isComplete={introComplete} />
 
       {/* 1. Sticky Navigation */}
       <Navbar introComplete={introComplete} />
@@ -57,7 +56,10 @@ export default function Home() {
       {/* 2. Hero Section */}
       <HeroSection introComplete={introComplete} />
 
-      {/* 3. Heritage / Evolution Across 6 Flagship Editions */}
+      {/* 3. The Scale of Winter Coding Contest */}
+      <ScaleSection />
+
+      {/* 4. Heritage / Evolution Across 6 Flagship Editions */}
       <EditionsSection />
 
       {/* 4. Archives / 5 Editions of Algorithmic Excellence Photo Marquee */}

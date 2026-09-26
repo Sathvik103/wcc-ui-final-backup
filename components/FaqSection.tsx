@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const faqs = [
   {
@@ -22,39 +23,54 @@ const faqs = [
 ];
 
 export default function FaqSection() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   const toggle = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
   return (
-    <section id="faq" className="section">
-      <div className="wrap">
-        <div className="section-head reveal">
-          <span className="section-badge">INQUIRIES</span>
-          <h2>Frequently asked questions.</h2>
+    <section id="faq" className="section bg-bg border-t border-[rgba(26,25,24,0.05)] pt-20 pb-28">
+      <div className="wrap max-w-4xl mx-auto">
+        <div className="section-head reveal" style={{ textAlign: "center", marginBottom: "60px" }}>
+          <span className="section-badge mb-3">06 / INQUIRIES</span>
+          <h2>Frequently Asked Questions</h2>
         </div>
-        <div className="reveal">
+        <div className="reveal flex flex-col gap-4">
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
             return (
-              <div key={index} className={`faq-item ${isOpen ? "open" : ""}`}>
+              <div 
+                key={index} 
+                className={`border-2 transition-colors duration-300 rounded-xl overflow-hidden ${isOpen ? 'border-coral bg-white shadow-[6px_6px_0px_rgba(255,95,64,0.15)]' : 'border-[rgba(26,25,24,0.15)] bg-transparent hover:border-[rgba(26,25,24,0.3)]'}`}
+              >
                 <button
                   type="button"
-                  className="faq-q"
+                  className="w-full flex items-center justify-between p-6 text-left focus:outline-none focus:bg-[rgba(26,25,24,0.02)]"
                   onClick={() => toggle(index)}
                   aria-expanded={isOpen}
                 >
-                  <span>{faq.q}</span>
-                  <span className="ind">{isOpen ? "−" : "+"}</span>
+                  <span className={`font-display font-bold text-lg md:text-xl transition-colors ${isOpen ? 'text-coral' : 'text-ink'}`}>
+                    {faq.q}
+                  </span>
+                  <span className={`flex-shrink-0 ml-4 flex items-center justify-center w-8 h-8 rounded-full border-2 transition-all ${isOpen ? 'border-coral text-coral rotate-45' : 'border-ink text-ink rotate-0'}`}>
+                    +
+                  </span>
                 </button>
-                <div
-                  className="faq-a"
-                  style={{ maxHeight: isOpen ? "200px" : "0px" }}
-                >
-                  <p>{faq.a}</p>
-                </div>
+                <AnimatePresence initial={false}>
+                  {isOpen && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] as const }}
+                    >
+                      <div className="px-6 pb-6 text-dim text-base font-medium leading-relaxed">
+                        {faq.a}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
               </div>
             );
           })}
