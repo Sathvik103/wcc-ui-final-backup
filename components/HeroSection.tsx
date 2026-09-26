@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useState, useEffect, useRef } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
@@ -42,7 +42,7 @@ function Countdown() {
   ];
 
   return (
-    <div className="mt-12 max-w-xl">
+    <div className="mt-20 max-w-xl">
       <div className="flex items-end justify-between border-b-2 border-ink pb-2 mb-4">
         <span className="font-mono text-xs font-bold text-coral tracking-[0.15em] uppercase">NEXT ROUND</span>
         <div className="text-right">
@@ -202,7 +202,7 @@ export default function HeroSection({ introComplete = true }: { introComplete?: 
             animate={introComplete ? "show" : "hidden"}
           >
             <motion.div variants={itemVariants} className="mb-5 inline-block font-mono text-[11px] font-bold text-ink tracking-[0.15em] uppercase border-l-2 border-coral pl-4 py-1">
-              ACM VNRVJIET PRESENTS — SIXTH FLAGSHIP EDITION
+              ACM VNRVJIET PRESENTS â€” SIXTH FLAGSHIP EDITION
             </motion.div>
             
             <motion.h1 variants={itemVariants} className="mb-6 text-[clamp(44px,7.5vw,100px)] font-display font-extrabold leading-[0.9] tracking-[-0.02em] text-ink uppercase">
@@ -222,7 +222,7 @@ export default function HeroSection({ introComplete = true }: { introComplete?: 
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                REGISTER FOR FREE ↗
+                REGISTER FOR FREE â†—
               </a>
               <a className="font-bold text-sm text-dim hover:text-coral transition-colors border-b-2 border-ink pb-0.5 tracking-wide" href="#format">
                 See how it works

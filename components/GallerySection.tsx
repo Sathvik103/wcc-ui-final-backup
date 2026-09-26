@@ -4,12 +4,12 @@ import React from "react";
 import Image from "next/image";
 
 const photos = [
-  { img: "/assets/images/arena.jpg", alt: "WCC Arena" },
-  { img: "/assets/images/trophy.jpg", alt: "WCC Trophy" },
-  { img: "/assets/images/team.jpg", alt: "WCC Team" },
-  { img: "/assets/images/wcc_arena_photo_1790406014428.jpg", alt: "WCC Arena Alternate" },
-  { img: "/assets/images/wcc_trophy_photo_1790406042341.jpg", alt: "WCC Trophy Alternate" },
-  { img: "/assets/images/wcc_team_photo_1790406068703.jpg", alt: "WCC Team Alternate" },
+  { img: "/assets/gall1.jpg", alt: "WCC Arena Competition" },
+  { img: "/assets/gall6.jpg", alt: "WCC Participants Focus" },
+  { img: "/assets/pic4.jpg", alt: "WCC Event Stage" },
+  { img: "/assets/pic6.jpg", alt: "WCC Audience Atmosphere" },
+  { img: "/assets/gall10.jpg", alt: "WCC Teams Collaborating" },
+  { img: "/assets/pic8.jpg", alt: "WCC Organizers and Leaders" },
 ];
 
 export default function GallerySection() {

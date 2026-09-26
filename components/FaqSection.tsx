@@ -1,18 +1,18 @@
-"use client";
+﻿"use client";
 
 import React, { useState } from "react";
 
 const faqs = [
   {
     q: "Is Round 1 really 100% free?",
-    a: "Yes. Registration and participation in Round 1 is completely free for all student participants across India — no hidden charges.",
+    a: "Yes. Registration and participation in Round 1 is completely free for all student participants across India â€” no hidden charges.",
   },
   {
     q: "What's the permissible team size?",
     a: "Solo or duo. Both members must be enrolled in an accredited degree program (B.Tech, BE, BCA, MCA, M.Tech, etc.).",
   },
   {
-    q: "Which languages are supported on HackerRank?",
+    q: "Which languages are supported on HackerEarth?",
     a: "C++ (GCC 17/20), Java (17/21), Python 3.x and C. Standard template/data-structure libraries are fully permitted.",
   },
   {
@@ -47,7 +47,7 @@ export default function FaqSection() {
                   aria-expanded={isOpen}
                 >
                   <span>{faq.q}</span>
-                  <span className="ind">{isOpen ? "−" : "+"}</span>
+                  <span className="ind">{isOpen ? "âˆ’" : "+"}</span>
                 </button>
                 <div
                   className="faq-a"

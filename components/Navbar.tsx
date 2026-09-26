@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
@@ -28,7 +28,7 @@ export function Navbar({ introComplete = true }: { introComplete?: boolean }) {
           {introComplete ? (
             <motion.div layoutId="acm-lockup" className="flex items-center gap-3">
               <Image
-                src="/assets/images/acm_logo.png"
+                src="/acm-vnrvjiet-logo.png"
                 alt="ACM VNRVJIET Logo"
                 width={44}
                 height={44}
@@ -58,7 +58,7 @@ export function Navbar({ introComplete = true }: { introComplete?: boolean }) {
           target="_blank"
           rel="noopener noreferrer"
         >
-          REGISTER ↗
+          REGISTER â†—
         </a>
       </div>
     </motion.nav>

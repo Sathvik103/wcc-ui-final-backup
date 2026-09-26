@@ -1,4 +1,4 @@
-import type { Metadata, Viewport } from "next";
+﻿import type { Metadata, Viewport } from "next";
 import { Space_Grotesk, JetBrains_Mono, Inter } from "next/font/google";
 import "./globals.css";
 
@@ -31,9 +31,9 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Winter Coding Contest 6.0 — Redesign Concept",
+  title: "Winter Coding Contest 6.0 â€” Redesign Concept",
   description:
-    "A national algorithmic arena. Two rounds, one campus finale, and a pipeline built to find India's sharpest problem-solvers. Round 1 is 100% Free on HackerRank.",
+    "A national algorithmic arena. Two rounds, one campus finale, and a pipeline built to find India's sharpest problem-solvers. Round 1 is 100% Free on HackerEarth.",
   keywords: [
     "Winter Coding Contest",
     "WCC 6.0",
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     "Hackathon",
     "Data Structures",
     "Algorithms",
-    "HackerRank",
+    "HackerEarth",
     "Unstop",
     "Hyderabad Coding Contest",
   ],

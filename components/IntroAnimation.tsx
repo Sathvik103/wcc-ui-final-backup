@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
@@ -51,7 +51,7 @@ export default function IntroAnimation({ onComplete, isComplete }: { onComplete:
           >
             <motion.div layout>
               <Image
-                src="/assets/images/acm_logo.png"
+                src="/acm-vnrvjiet-logo.png"
                 alt="ACM VNRVJIET Logo"
                 width={80}
                 height={80}

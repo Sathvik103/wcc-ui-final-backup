@@ -22,7 +22,7 @@ const editionData: Record<EditionKey, EditionInfo> = {
   "6.0": {
     pill: "THE NEXT EVOLUTION • 2026",
     title: "Winter Coding Contest 6.0",
-    desc: "The sixth flagship edition. Expanding further with official HackerRank proctored arena infrastructure and nationwide outreach on Unstop.",
+    desc: "The sixth flagship edition. Expanding further with official HackerEarth proctored arena infrastructure and nationwide outreach on Unstop.",
     m1Label: "EXPECTED CODERS",
     m1Val: "6,000+",
     m2Label: "INSTITUTIONS",
@@ -41,7 +41,7 @@ const editionData: Record<EditionKey, EditionInfo> = {
     m2Val: "75,000+",
     m3Label: "PRIZE POOL",
     m3Val: "₹40,000+",
-    poster: "/assets/images/poster_5_0.jpg",
+    poster: "/assets/WCC 5.0.png",
   },
   "4.0": {
     pill: "HYBRID MILESTONE • 2024",
@@ -53,7 +53,7 @@ const editionData: Record<EditionKey, EditionInfo> = {
     m2Val: "50,000+",
     m3Label: "PRIZE POOL",
     m3Val: "₹30,000+",
-    poster: "/assets/images/poster_4_0.jpg",
+    poster: "/assets/WCC 4.0 FINAL.png",
   },
   "3.0": {
     pill: "STATEWIDE ARENA • 2023",
@@ -65,7 +65,7 @@ const editionData: Record<EditionKey, EditionInfo> = {
     m2Val: "45+",
     m3Label: "PRIZE POOL",
     m3Val: "₹20,000+",
-    poster: "/assets/images/poster_3_0.jpg",
+    poster: "/assets/wcc 3.0.png",
   },
   "2.0": {
     pill: "VIRTUAL EXPANSION • 2022",
@@ -77,7 +77,7 @@ const editionData: Record<EditionKey, EditionInfo> = {
     m2Val: "18,000+",
     m3Label: "PRIZE POOL",
     m3Val: "₹12,000+",
-    poster: "/assets/images/poster_2_0.jpg",
+    poster: "/assets/WCC 2.0 POSTER.jpg",
   },
   "1.0": {
     pill: "THE FOUNDATION • 2021",
@@ -89,7 +89,7 @@ const editionData: Record<EditionKey, EditionInfo> = {
     m2Val: "100%",
     m3Label: "PRIZE POOL",
     m3Val: "₹7,500+",
-    poster: "/assets/images/poster_1_0.jpg",
+    poster: "/assets/wc1.jpg",
   },
 };
 
@@ -100,10 +100,10 @@ export default function EditionsSection() {
   return (
     <section id="heritage" className="section">
       <div className="wrap">
-        <div className="section-head reveal" style={{ textAlign: "center" }}>
+        <div className="section-head reveal mx-auto flex flex-col items-center justify-center text-center">
           <span className="section-badge">HERITAGE OF EXCELLENCE</span>
-          <h2 style={{ whiteSpace: "nowrap" }}>Evolution Across 6 Flagship Editions</h2>
-          <p>
+          <h2 className="whitespace-nowrap text-center">Evolution Across 6 Flagship Editions</h2>
+          <p className="text-center max-w-[500px] mx-auto mt-4">
             Click across editions to trace how a departmental initiative scaled into a recognized national competitive standard.
           </p>
         </div>
