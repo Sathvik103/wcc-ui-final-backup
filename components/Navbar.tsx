@@ -58,7 +58,7 @@ export function Navbar({ introComplete = true }: { introComplete?: boolean }) {
           target="_blank"
           rel="noopener noreferrer"
         >
-          REGISTER â†—
+          REGISTER ↗
         </a>
       </div>
     </motion.nav>

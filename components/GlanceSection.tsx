@@ -29,7 +29,7 @@ export function GlanceSection() {
           {/* 02 Squad */}
           <div className="py-4 md:py-0 md:px-6">
             <span className="font-mono text-xs font-bold text-[#FF6D4D]">02 / SQUAD</span>
-            <h3 className="font-display font-bold text-[#0F172A] text-lg mt-1 mb-1.5">1 â€“ 2 Coders / Team</h3>
+            <h3 className="font-display font-bold text-[#0F172A] text-lg mt-1 mb-1.5">1 – 2 Coders / Team</h3>
             <p className="text-xs text-slate-500 leading-relaxed">
               Open to all undergraduate and postgraduate engineering and technology scholars nationwide.
             </p>
@@ -38,7 +38,7 @@ export function GlanceSection() {
           {/* 03 Stakes */}
           <div className="py-4 md:py-0 md:px-6">
             <span className="font-mono text-xs font-bold text-[#FF6D4D]">03 / STAKES</span>
-            <h3 className="font-display font-bold text-[#0F172A] text-lg mt-1 mb-1.5">â‚¹50,000+ Honors</h3>
+            <h3 className="font-display font-bold text-[#0F172A] text-lg mt-1 mb-1.5">₹50,000+ Honors</h3>
             <p className="text-xs text-slate-500 leading-relaxed">
               Direct cash pool, official ACM trophies, accredited certificates, and industry recognition.
             </p>

@@ -144,14 +144,14 @@ export default function StagesSection() {
                 <div className="curved-card">
                   <span className="map-step-badge">01</span>
                   <div className="curved-pin">
-                    <span className="dot"></span>01 Â· NATIONAL REGISTRATION
+                    <span className="dot"></span>01 · NATIONAL REGISTRATION
                   </div>
                   <h3>National Registration</h3>
                   <p>Register solo or in duos on Unstop. Round 1 is completely free for every student in India.</p>
-                  <div className="curved-date">ELIGIBILITY Â· ALL UG &amp; PG STUDENTS Â· UNTIL 24 SEPT</div>
+                  <div className="curved-date">ELIGIBILITY · ALL UG &amp; PG STUDENTS · UNTIL 24 SEPT</div>
                   <div>
                     <a className="map-link-btn" href="https://unstop.com" target="_blank" rel="noopener noreferrer">
-                      REGISTER ON UNSTOP â†’
+                      REGISTER ON UNSTOP →
                     </a>
                   </div>
                 </div>
@@ -165,14 +165,14 @@ export default function StagesSection() {
                 <div className="curved-card">
                   <span className="map-step-badge">02</span>
                   <div className="curved-pin">
-                    <span className="dot"></span>02 Â· VIRTUAL ARENA
+                    <span className="dot"></span>02 · VIRTUAL ARENA
                   </div>
-                  <h3>Round 1 â€” Virtual Arena</h3>
-                  <p>Proctored on HackerEarth, 9:00 AMâ€“4:40 PM. Data Structures, DP, Math and Graph problems.</p>
-                  <div className="curved-date">MODE Â· FULLY ONLINE Â· 09 OCT 2026</div>
+                  <h3>Round 1 — Virtual Arena</h3>
+                  <p>Proctored on HackerEarth, 9:00 AM–4:40 PM. Data Structures, DP, Math and Graph problems.</p>
+                  <div className="curved-date">MODE · FULLY ONLINE · 09 OCT 2026</div>
                   <div>
                     <a className="map-link-btn" href="https://HackerEarth.com" target="_blank" rel="noopener noreferrer">
-                      HackerEarth PORTAL â†’
+                      HackerEarth PORTAL →
                     </a>
                   </div>
                 </div>
@@ -186,11 +186,11 @@ export default function StagesSection() {
                 <div className="curved-card">
                   <span className="map-step-badge">03</span>
                   <div className="curved-pin">
-                    <span className="dot"></span>03 Â· AUDIT &amp; SHORTLISTING
+                    <span className="dot"></span>03 · AUDIT &amp; SHORTLISTING
                   </div>
                   <h3>Audit &amp; Shortlisting</h3>
                   <p>Automated plagiarism and similarity audits. Top 150+ coders receive campus invitations.</p>
-                  <div className="curved-date">MERIT RANKLIST PUBLISHED Â· 10 OCT 2026</div>
+                  <div className="curved-date">MERIT RANKLIST PUBLISHED · 10 OCT 2026</div>
                 </div>
                 <div className="card-mask"></div>
               </div>
@@ -202,11 +202,11 @@ export default function StagesSection() {
                 <div className="curved-card">
                   <span className="map-step-badge">04</span>
                   <div className="curved-pin">
-                    <span className="dot"></span>04 Â· CAMPUS FINALE
+                    <span className="dot"></span>04 · CAMPUS FINALE
                   </div>
-                  <h3>Round 2 â€” Campus Finale</h3>
+                  <h3>Round 2 — Campus Finale</h3>
                   <p>In-person battle at VNRVJIET&apos;s HPC labs, followed by the valedictory awards ceremony.</p>
-                  <div className="curved-date">LOCATION Â· VNRVJIET, HYDERABAD Â· 11 OCT 2026</div>
+                  <div className="curved-date">LOCATION · VNRVJIET, HYDERABAD · 11 OCT 2026</div>
                   <div>
                     <a
                       className="map-link-btn"
@@ -214,7 +214,7 @@ export default function StagesSection() {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      VNRVJIET CAMPUS MAP â†’
+                      VNRVJIET CAMPUS MAP →
                     </a>
                   </div>
                 </div>

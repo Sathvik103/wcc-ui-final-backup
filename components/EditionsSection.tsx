@@ -100,10 +100,10 @@ export default function EditionsSection() {
   return (
     <section id="heritage" className="section">
       <div className="wrap">
-        <div className="section-head reveal mx-auto flex flex-col items-center justify-center text-center">
+        <div className="section-head reveal mx-auto flex flex-col items-center justify-center text-center px-4 w-full">
           <span className="section-badge">HERITAGE OF EXCELLENCE</span>
-          <h2 className="whitespace-nowrap text-center">Evolution Across 6 Flagship Editions</h2>
-          <p className="text-center max-w-[500px] mx-auto mt-4">
+          <h2 className="text-center w-full break-words sm:break-normal">Evolution Across 6 Flagship Editions</h2>
+          <p className="text-center max-w-[500px] mx-auto mt-4 w-full">
             Click across editions to trace how a departmental initiative scaled into a recognized national competitive standard.
           </p>
         </div>
@@ -161,14 +161,14 @@ export default function EditionsSection() {
 
           <div className="heritage-right">
             <div className="heritage-right-title">OFFICIAL EDITION POSTER</div>
-            <div className="heritage-poster-frame relative">
+            <div className="heritage-poster-frame relative bg-[#f7f6f3] flex items-center justify-center p-2 border-2 border-ink border-opacity-10">
               <Image
                 key={current.poster}
                 src={current.poster}
                 alt={`${current.title} Poster`}
-                width={290}
-                height={362}
-                className="w-full h-full object-cover transition-opacity duration-300"
+                fill
+                sizes="(max-width: 768px) 100vw, 300px"
+                className="object-contain transition-opacity duration-300 p-3"
               />
             </div>
           </div>

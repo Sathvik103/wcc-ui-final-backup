@@ -31,7 +31,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Winter Coding Contest 6.0 â€” Redesign Concept",
+  title: "Winter Coding Contest 6.0 — Redesign Concept",
   description:
     "A national algorithmic arena. Two rounds, one campus finale, and a pipeline built to find India's sharpest problem-solvers. Round 1 is 100% Free on HackerEarth.",
   keywords: [

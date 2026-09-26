@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import React, { useState, useEffect, useRef } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
@@ -42,7 +42,7 @@ function Countdown() {
   ];
 
   return (
-    <div className="mt-20 max-w-xl">
+    <div className="mt-24 max-w-xl">
       <div className="flex items-end justify-between border-b-2 border-ink pb-2 mb-4">
         <span className="font-mono text-xs font-bold text-coral tracking-[0.15em] uppercase">NEXT ROUND</span>
         <div className="text-right">
@@ -178,7 +178,7 @@ export default function HeroSection({ introComplete = true }: { introComplete?: 
   };
 
   return (
-    <section id="hero" className="relative min-h-[100svh] flex flex-col justify-center overflow-hidden pt-32 pb-24">
+    <section id="hero" className="relative min-h-[100svh] flex flex-col justify-start lg:justify-center overflow-hidden pt-36 lg:pt-32 pb-16 lg:pb-24">
       <motion.div 
         initial={{ opacity: 0 }} 
         animate={{ opacity: introComplete ? 1 : 0 }} 
@@ -192,37 +192,37 @@ export default function HeroSection({ introComplete = true }: { introComplete?: 
         className="hero-rays" 
       />
       
-      <div className="wrap relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-10 items-center">
+      <div className="wrap relative z-10 flex-1 flex flex-col justify-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-center">
           
           <motion.div 
-            className="lg:col-span-7 flex flex-col items-start"
+            className="lg:col-span-7 flex flex-col items-start w-full"
             variants={containerVariants}
             initial="hidden"
             animate={introComplete ? "show" : "hidden"}
           >
             <motion.div variants={itemVariants} className="mb-5 inline-block font-mono text-[11px] font-bold text-ink tracking-[0.15em] uppercase border-l-2 border-coral pl-4 py-1">
-              ACM VNRVJIET PRESENTS â€” SIXTH FLAGSHIP EDITION
+              ACM VNRVJIET PRESENTS — SIXTH FLAGSHIP EDITION
             </motion.div>
             
-            <motion.h1 variants={itemVariants} className="mb-6 text-[clamp(44px,7.5vw,100px)] font-display font-extrabold leading-[0.9] tracking-[-0.02em] text-ink uppercase">
+            <motion.h1 variants={itemVariants} className="mb-6 text-[clamp(44px,7.5vw,100px)] font-display font-extrabold leading-[0.9] tracking-[-0.02em] text-ink uppercase break-words w-full">
               WINTER<br />
               CODING <span className="text-transparent" style={{ WebkitTextStroke: "2px var(--ink)" }}>CONTEST</span><br />
               <span className="text-coral">6.0</span>
             </motion.h1>
             
-            <motion.p variants={itemVariants} className="max-w-[500px] text-[17px] text-dim leading-[1.6] font-medium mb-10">
+            <motion.p variants={itemVariants} className="max-w-[500px] text-[17px] text-dim leading-[1.6] font-medium mb-14 lg:mb-12">
               A national algorithmic arena. Two rounds, one campus finale, and a pipeline built to find India's sharpest problem-solvers.
             </motion.p>
             
-            <motion.div variants={itemVariants} className="flex flex-wrap gap-6 items-center w-full">
+            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-6 items-stretch sm:items-center w-full">
               <a
-                className="btn btn-solid px-8 py-4 bg-ink text-bg font-bold font-display text-[14px] border-[3px] border-ink shadow-[4px_4px_0px_var(--coral)] hover:shadow-[6px_6px_0px_var(--coral)] hover:-translate-y-1 transition-all uppercase tracking-[0.1em]"
+                className="btn btn-solid px-8 py-4 bg-ink text-bg font-bold font-display text-[14px] border-[3px] border-ink shadow-[4px_4px_0px_var(--coral)] hover:shadow-[6px_6px_0px_var(--coral)] hover:-translate-y-1 transition-all uppercase tracking-[0.1em] text-center"
                 href="https://unstop.com"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                REGISTER FOR FREE â†—
+                REGISTER FOR FREE ↗
               </a>
               <a className="font-bold text-sm text-dim hover:text-coral transition-colors border-b-2 border-ink pb-0.5 tracking-wide" href="#format">
                 See how it works

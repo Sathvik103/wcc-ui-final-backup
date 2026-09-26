@@ -5,7 +5,7 @@ import React, { useState } from "react";
 const faqs = [
   {
     q: "Is Round 1 really 100% free?",
-    a: "Yes. Registration and participation in Round 1 is completely free for all student participants across India â€” no hidden charges.",
+    a: "Yes. Registration and participation in Round 1 is completely free for all student participants across India — no hidden charges.",
   },
   {
     q: "What's the permissible team size?",
@@ -47,7 +47,7 @@ export default function FaqSection() {
                   aria-expanded={isOpen}
                 >
                   <span>{faq.q}</span>
-                  <span className="ind">{isOpen ? "âˆ’" : "+"}</span>
+                  <span className="ind">{isOpen ? "-" : "+"}</span>
                 </button>
                 <div
                   className="faq-a"

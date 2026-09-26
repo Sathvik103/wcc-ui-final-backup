@@ -39,14 +39,7 @@ export default function Home() {
 
   return (
     <>
-      {/* Background Floating Coding Tokens */}
-      <div className="bg-floaters">
-        <div className="bg-icon">{"{ }"}</div>
-        <div className="bg-icon">{"</>"}</div>
-        <div className="bg-icon">{"();"}</div>
-        <div className="bg-icon">{"[ ]"}</div>
-        <div className="bg-icon">{"/*"}</div>
-      </div>
+
 
       <IntroAnimation onComplete={() => setIntroComplete(true)} isComplete={introComplete} />
 
