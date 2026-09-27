@@ -38,7 +38,7 @@ function InteractivePoster() {
 
   return (
     <div
-      className="w-full max-w-[440px] mx-auto lg:max-w-[500px] lg:mr-0 lg:ml-auto mt-12 lg:mt-0"
+      className="w-full max-w-[440px] mx-auto lg:max-w-[500px] lg:mr-0 lg:ml-auto mt-12 lg:mt-0 !mb-3"
       style={{ perspective: 1200 }}
     >
       <motion.div
@@ -62,21 +62,21 @@ function InteractivePoster() {
           />
         </div>
 
-        <div className="flex flex-row gap-3 sm:gap-4 w-full mt-8 items-start">
-  <div className="flex-1 bg-white border border-ink/10 rounded-xl !px-4 !py-3 text-left shadow-sm">
-    <div className="text-[10px] sm:text-[11px] font-bold tracking-widest text-ink uppercase mb-1.5 opacity-60">
-      Round 1 (Online)
-    </div>
+        <div className="flex flex-row gap-3 sm:gap-4 w-full mt-8 items-stretch">
+ <div className="flex-1 min-w-0 bg-white border border-ink/10 rounded-xl !px-3 sm:!px-4 !py-3 text-left shadow-sm">
+    <div className="text-[9px] sm:text-[11px] font-bold tracking-[0.08em] sm:tracking-widest text-ink uppercase mb-1.5 opacity-60 whitespace-nowrap">
+  Round 1 (Online)
+</div>
 
     <div className="text-[13px] sm:text-[14px] font-bold text-ink leading-tight">
       13 OCT 2026
     </div>
   </div>
 
-  <div className="flex-1 bg-white border border-ink/10 rounded-xl !px-4 !py-3 text-left shadow-sm">
-    <div className="text-[10px] sm:text-[11px] font-bold tracking-widest text-ink uppercase mb-1.5 opacity-60 whitespace-nowrap">
-      Round 2 (Campus)
-    </div>
+  <div className="flex-1 min-w-0 bg-white border border-ink/10 rounded-xl !px-3 sm:!px-4 !py-3 text-left shadow-sm">
+    <div className="text-[9px] sm:text-[11px] font-bold tracking-[0.08em] sm:tracking-widest text-ink uppercase mb-1.5 opacity-60 whitespace-nowrap">
+  Round 2 (Campus)
+</div>
 
     <div className="text-[13px] sm:text-[14px] font-bold text-ink leading-tight">
       22 OCT 2026
