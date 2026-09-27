@@ -147,7 +147,7 @@ export default function StagesSection() {
                     <span className="dot"></span>01 · NATIONAL REGISTRATION
                   </div>
                   <h3>National Registration</h3>
-                  <p>Register individually or with one teammate on Unstop. Round 1 is completely free for students across India.</p>
+                  <p className="text-justify">Register individually or with one teammate on Unstop. Round 1 is completely free for students across India.</p>
                   <div className="curved-date">DEADLINE — 11 OCT 2026 (EXT. 12 OCT)</div>
                   <div>
                     <a className="map-link-btn" href="https://unstop.com" target="_blank" rel="noopener noreferrer">

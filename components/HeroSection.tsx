@@ -74,7 +74,7 @@ function InteractivePoster() {
   </div>
 
   <div className="flex-1 bg-white border border-ink/10 rounded-xl !px-4 !py-3 text-left shadow-sm">
-    <div className="text-[10px] sm:text-[11px] font-bold tracking-widest text-ink uppercase mb-1.5 opacity-60">
+    <div className="text-[10px] sm:text-[11px] font-bold tracking-widest text-ink uppercase mb-1.5 opacity-60 whitespace-nowrap">
       Round 2 (Campus)
     </div>
 
@@ -187,7 +187,7 @@ export default function HeroSection({
             >
               <a
                 className="btn btn-solid !px-5 !py-3 bg-ink text-bg font-bold font-display text-[18px] border-[3px] border-ink shadow-[5px_5px_0px_var(--coral)] hover:shadow-[7px_7px_0px_var(--coral)] hover:-translate-y-1 transition-all uppercase tracking-[0.1em] text-center flex items-center justify-center gap-2"
-                href="https://unstop.com"
+                href="https://unstop.com/o/xkq9yFv?lb=Vr9VXAuO&utm_medium=Share&utm_source=online_coding_challenge&utm_campaign=Acmcha18131"
                 target="_blank"
                 rel="noopener noreferrer"
               >

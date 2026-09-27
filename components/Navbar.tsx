@@ -61,7 +61,7 @@ export function Navbar({ introComplete = true }: { introComplete?: boolean }) {
         <div className="flex items-center gap-2 sm:gap-3 shrink-0">
           <a
             className="btn btn-outline text-xs sm:text-xs py-1.5 px-3 sm:py-2.5 sm:px-5 whitespace-nowrap !hidden lg:!inline-flex"
-            href="https://unstop.com"
+            href="https://unstop.com/o/xkq9yFv?lb=Vr9VXAuO&utm_medium=Share&utm_source=online_coding_challenge&utm_campaign=Acmcha18131"
             target="_blank"
             rel="noopener noreferrer"
           >
