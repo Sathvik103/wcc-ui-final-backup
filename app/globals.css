@@ -1345,3 +1345,63 @@ footer {
     gap: 24px !important;
   }
 }
+/* =========================================================
+   WCC 6.0 HERO — TYPOGRAPHY SCALE
+   ========================================================= */
+
+@media (min-width: 1024px) {
+  #hero .hero-presents {
+    margin-bottom: 34px !important;
+    padding-left: 28px !important;
+    padding-right: 28px !important;
+    font-size: 13px !important;
+  }
+
+  #hero .hero-main-title {
+    margin-bottom: 26px !important;
+    font-size: clamp(66px, 5.2vw, 88px) !important;
+    line-height: 0.98 !important;
+    letter-spacing: -0.045em !important;
+    max-width: 720px !important;
+  }
+
+  #hero .hero-subtitle {
+    margin-bottom: 34px !important;
+    max-width: 760px !important;
+    font-size: 23px !important;
+    line-height: 1.45 !important;
+  }
+
+  #hero .hero-actions {
+    gap: 28px !important;
+  }
+
+  #hero .hero-left {
+    width: 100%;
+    max-width: 820px;
+  }
+}
+
+@media (max-width: 1023px) {
+  #hero .hero-presents {
+    margin-bottom: 30px !important;
+    padding-left: 22px !important;
+    padding-right: 22px !important;
+    font-size: 12px !important;
+  }
+
+  #hero .hero-main-title {
+    margin-bottom: 24px !important;
+    line-height: 0.94 !important;
+  }
+
+  #hero .hero-subtitle {
+    margin-bottom: 30px !important;
+    font-size: 19px !important;
+    line-height: 1.5 !important;
+  }
+
+  #hero .hero-actions {
+    gap: 20px !important;
+  }
+}
