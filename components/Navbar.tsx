@@ -60,7 +60,7 @@ export function Navbar({ introComplete = true }: { introComplete?: boolean }) {
         {/* Actions (Register CTA + Mobile Toggle) */}
         <div className="flex items-center gap-2 sm:gap-3 shrink-0">
           <a
-            className="btn btn-outline text-xs sm:text-xs py-1.5 px-3 sm:py-2.5 sm:px-5 whitespace-nowrap"
+            className="btn btn-outline text-xs sm:text-xs py-1.5 px-3 sm:py-2.5 sm:px-5 whitespace-nowrap !hidden lg:!inline-flex"
             href="https://unstop.com"
             target="_blank"
             rel="noopener noreferrer"
@@ -77,7 +77,7 @@ export function Navbar({ introComplete = true }: { introComplete?: boolean }) {
             aria-expanded={mobileMenuOpen}
           >
             {mobileMenuOpen ? <X size={20} strokeWidth={2.5} className="text-[#1a1918]" /> : <Menu size={20} strokeWidth={2.5} className="text-[#1a1918]" />}
-            </button>
+          </button>
         </div>
       </div>
 
@@ -91,60 +91,62 @@ export function Navbar({ introComplete = true }: { introComplete?: boolean }) {
             transition={{ duration: 0.2, ease: "easeInOut" }}
             className="lg:hidden bg-white border-t-2 border-[#1a1918] mt-2.5 shadow-xl overflow-hidden"
           >
-            <div className="wrap !px-4 py-4 flex flex-col gap-1 items-center">
-              <a
-                href="#scale"
-                onClick={() => setMobileMenuOpen(false)}
-                className="font-display font-bold text-sm text-[#1a1918] hover:text-[#ff5f40] hover:bg-[#f5f3ee] rounded-lg px-4 py-2 transition-colors block text-center w-full"
-              >
-                Overview
-              </a>
-              <a
-                href="#heritage"
-                onClick={() => setMobileMenuOpen(false)}
-                className="font-display font-bold text-sm text-[#1a1918] hover:text-[#ff5f40] hover:bg-[#f5f3ee] rounded-lg px-4 py-2 transition-colors block text-center w-full"
-              >
-                Evolution
-              </a>
-              <a
-                href="#format"
-                onClick={() => setMobileMenuOpen(false)}
-                className="font-display font-bold text-sm text-[#1a1918] hover:text-[#ff5f40] hover:bg-[#f5f3ee] rounded-lg px-4 py-2 transition-colors block text-center w-full"
-              >
-                How It Works
-              </a>
-              <a
-                href="#archive"
-                onClick={() => setMobileMenuOpen(false)}
-                className="font-display font-bold text-sm text-[#1a1918] hover:text-[#ff5f40] hover:bg-[#f5f3ee] rounded-lg px-4 py-2 transition-colors block text-center w-full"
-              >
-                Archive
-              </a>
-              <a
-                href="#prizes"
-                onClick={() => setMobileMenuOpen(false)}
-                className="font-display font-bold text-sm text-[#1a1918] hover:text-[#ff5f40] hover:bg-[#f5f3ee] rounded-lg px-4 py-2 transition-colors block text-center w-full"
-              >
-                Prizes
-              </a>
-              <a
-                href="#sponsors"
-                onClick={() => setMobileMenuOpen(false)}
-                className="font-display font-bold text-sm text-[#1a1918] hover:text-[#ff5f40] hover:bg-[#f5f3ee] rounded-lg px-4 py-2 transition-colors block text-center w-full"
-              >
-                Sponsors
-              </a>
-              <a
-                href="#faq"
-                onClick={() => setMobileMenuOpen(false)}
-                className="font-display font-bold text-sm text-[#1a1918] hover:text-[#ff5f40] hover:bg-[#f5f3ee] rounded-lg px-4 py-2 transition-colors block text-center w-full"
-              >
-                FAQ
-              </a>
-
-              <div className="pt-2 mt-1 border-t border-slate-200 w-full">
+            <div className="wrap !px-6 sm:!px-8 pt-5 pb-6 flex flex-col items-start w-full">
+              <div className="flex flex-col gap-2.5 w-full">
                 <a
-                  className="btn btn-solid w-full text-center py-2.5 text-xs font-bold font-display uppercase tracking-wider block"
+                  href="#scale"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="font-display font-bold text-[15px] text-[#1a1918] hover:text-[#ff5f40] hover:bg-[#f5f3ee] rounded-lg px-4 py-2.5 transition-colors block text-left w-full"
+                >
+                  Overview
+                </a>
+                <a
+                  href="#heritage"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="font-display font-bold text-[15px] text-[#1a1918] hover:text-[#ff5f40] hover:bg-[#f5f3ee] rounded-lg px-4 py-2.5 transition-colors block text-left w-full"
+                >
+                  Evolution
+                </a>
+                <a
+                  href="#format"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="font-display font-bold text-[15px] text-[#1a1918] hover:text-[#ff5f40] hover:bg-[#f5f3ee] rounded-lg px-4 py-2.5 transition-colors block text-left w-full"
+                >
+                  How It Works
+                </a>
+                <a
+                  href="#archive"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="font-display font-bold text-[15px] text-[#1a1918] hover:text-[#ff5f40] hover:bg-[#f5f3ee] rounded-lg px-4 py-2.5 transition-colors block text-left w-full"
+                >
+                  Archive
+                </a>
+                <a
+                  href="#prizes"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="font-display font-bold text-[15px] text-[#1a1918] hover:text-[#ff5f40] hover:bg-[#f5f3ee] rounded-lg px-4 py-2.5 transition-colors block text-left w-full"
+                >
+                  Prizes
+                </a>
+                <a
+                  href="#sponsors"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="font-display font-bold text-[15px] text-[#1a1918] hover:text-[#ff5f40] hover:bg-[#f5f3ee] rounded-lg px-4 py-2.5 transition-colors block text-left w-full"
+                >
+                  Sponsors
+                </a>
+                <a
+                  href="#faq"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="font-display font-bold text-[15px] text-[#1a1918] hover:text-[#ff5f40] hover:bg-[#f5f3ee] rounded-lg px-4 py-2.5 transition-colors block text-left w-full"
+                >
+                  FAQ
+                </a>
+              </div>
+
+              <div className="pt-4 mt-3 border-t border-slate-200 w-full pb-2">
+                <a
+                  className="btn btn-solid w-full text-center py-3 text-xs sm:text-sm font-bold font-display uppercase tracking-wider block shadow-[3px_3px_0px_#1a1918]"
                   href="https://unstop.com"
                   target="_blank"
                   rel="noopener noreferrer"

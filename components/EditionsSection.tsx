@@ -119,68 +119,80 @@ export default function EditionsSection() {
         </div>
 
         {/* Inline Edition Switcher */}
-        <div className="flex justify-center items-center gap-8 mb-8 sm:mb-10 reveal">
-          <button onClick={goPrev} className="p-3 text-dim hover:text-coral transition-colors font-bold text-2xl flex items-center justify-center rounded-full hover:bg-black/5" aria-label="Previous edition">
+        <div className="flex justify-center items-center gap-4 sm:gap-6 mb-8 sm:mb-10 reveal">
+          <button
+            onClick={goPrev}
+            className="w-10 h-10 sm:w-11 sm:h-11 border-2 border-ink rounded-lg bg-white shadow-[2px_2px_0px_var(--ink)] hover:bg-[#f5f3ee] hover:text-coral active:translate-x-[1px] active:translate-y-[1px] transition-all flex items-center justify-center font-bold text-lg sm:text-xl text-ink cursor-pointer shrink-0"
+            aria-label="Previous edition"
+          >
             ←
           </button>
-          <div className="font-display font-extrabold text-2xl sm:text-3xl text-ink w-[160px] text-center tracking-tight">
+          <div className="font-display font-extrabold text-2xl sm:text-3xl text-ink w-[140px] sm:w-[170px] text-center tracking-tight select-none">
             WCC {currentVer}
           </div>
-          <button onClick={goNext} className="p-3 text-dim hover:text-coral transition-colors font-bold text-2xl flex items-center justify-center rounded-full hover:bg-black/5" aria-label="Next edition">
+          <button
+            onClick={goNext}
+            className="w-10 h-10 sm:w-11 sm:h-11 border-2 border-ink rounded-lg bg-white shadow-[2px_2px_0px_var(--ink)] hover:bg-[#f5f3ee] hover:text-coral active:translate-x-[1px] active:translate-y-[1px] transition-all flex items-center justify-center font-bold text-lg sm:text-xl text-ink cursor-pointer shrink-0"
+            aria-label="Next edition"
+          >
             →
           </button>
         </div>
 
-        {/* Dynamic Edition Card — override CSS reset with inline styles */}
-        <div className="reveal relative max-w-[1060px] mx-auto bg-white border-2 border-ink shadow-[8px_8px_0px_var(--ink)] rounded-2xl" style={{ display: 'block', padding: '40px' }}>
+        {/* Dynamic Edition Card */}
+        <div className="reveal relative max-w-[1060px] mx-auto bg-white border-2 border-ink shadow-[8px_8px_0px_var(--ink)] rounded-2xl !p-6 sm:!p-8 md:!p-10">
           <AnimatePresence mode="wait">
-            <motion.div 
+            <motion.div
               key={currentVer}
               initial={{ opacity: 0, scale: 0.98, y: 10 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.98, y: -10 }}
               transition={{ duration: 0.25, ease: "easeInOut" }}
-              style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) 380px', gap: '48px', alignItems: 'start' }}
+              style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) 380px', gap: '48px', alignItems: 'center' }}
               className="edition-grid-inner"
             >
-              
-              {/* LEFT COLUMN - TEXT & METRICS */}
-              <div className="flex flex-col justify-start min-h-full">
-                <span className="text-[11px] font-bold tracking-widest text-coral uppercase mb-4 inline-block">{current.pill}</span>
-                <h3 className="text-3xl sm:text-[38px] font-display font-extrabold text-ink mb-5 leading-[1.1]">{current.title}</h3>
-                <p className="text-[16px] sm:text-[17px] font-medium text-dim leading-[1.7] mb-8 text-left sm:text-justify">{current.desc}</p>
+
+              {/* CONTENT COLUMN - TEXT, METRICS & ROUND DETAILS */}
+              <div className="edition-content-col flex flex-col justify-start">
+                <span className="text-[11px] font-bold tracking-widest text-coral uppercase mb-2 sm:mb-3 inline-block text-left">{current.pill}</span>
+                <h3 className="text-2xl sm:text-3xl md:text-[36px] font-display font-extrabold text-ink mb-3 sm:mb-4 leading-[1.15] text-left">{current.title}</h3>
+                <p className="text-[15px] sm:text-[16px] font-medium text-dim leading-[1.7] mb-6 text-left sm:text-justify">{current.desc}</p>
 
                 {current.metrics && current.metrics.length > 0 && (
-                  <div className="grid grid-cols-2 gap-y-5 gap-x-8 mb-8">
+                  <div className="grid grid-cols-2 gap-y-4 gap-x-6 sm:gap-x-8 mb-6">
                     {current.metrics.map(m => (
                       <div key={m.label}>
                         <div className="text-[10px] sm:text-[11px] font-bold tracking-widest text-dim uppercase mb-1">{m.label}</div>
-                        <div className="text-xl sm:text-[22px] font-display font-bold text-ink">{m.val}</div>
+                        <div className="text-lg sm:text-[22px] font-display font-bold text-ink">{m.val}</div>
                       </div>
                     ))}
                   </div>
                 )}
 
                 {current.links.length > 0 && (
-                  <div className="mt-auto pt-6 border-t border-ink/10 flex flex-row gap-5 whitespace-nowrap items-center overflow-x-auto hide-scrollbar">
+                  <div className="pt-5 border-t border-ink/10 flex flex-row gap-4 sm:gap-5 whitespace-nowrap items-center overflow-x-auto hide-scrollbar">
                     {current.links.map(link => (
-                      <a key={link.label} href={link.url} target="_blank" rel="noopener noreferrer" className="font-bold text-[13px] text-ink hover:text-coral transition-colors flex items-center gap-1.5 uppercase tracking-widest shrink-0">
-                        {link.label} <span className="text-[14px]">↗</span>
+                      <a key={link.label} href={link.url} target="_blank" rel="noopener noreferrer" className="font-bold text-[12px] sm:text-[13px] text-ink hover:text-coral transition-colors flex items-center gap-1.5 uppercase tracking-widest shrink-0">
+                        {link.label} <span className="text-[13px] sm:text-[14px]">↗</span>
                       </a>
                     ))}
                   </div>
                 )}
               </div>
 
-              {/* RIGHT COLUMN - POSTER */}
-              <div className="flex flex-col items-center sm:items-end justify-start w-full max-w-[380px] mx-auto sm:max-w-none sm:mx-0">
-                <div className="relative bg-[#fbfaf9] border-2 border-ink shadow-[4px_4px_0px_rgba(0,0,0,0.1)] w-full aspect-[4/5] overflow-hidden rounded-xl">
+              {/* POSTER COLUMN */}
+              <div className="edition-poster-col flex flex-col items-center justify-center w-full max-w-[340px] sm:max-w-[380px] mx-auto">
+                <div
+                  className="relative bg-[#fbfaf9]  w-full overflow-hidden rounded-xl"
+                  style={{ aspectRatio: currentVer === "1.0" ? "1 / 1" : "4 / 5" }}
+                >
                   <Image
                     src={current.poster}
                     alt={`${current.title} Poster`}
                     fill
-                    sizes="380px"
-                    className="object-contain p-3"
+                    sizes="(max-width: 768px) 320px, 380px"
+                    className="object-contain !p-2.5 sm:!p-3"
+                    priority
                   />
                 </div>
               </div>

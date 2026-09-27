@@ -201,9 +201,15 @@ a {
   min-height: 100svh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   overflow: hidden;
-  padding-top: 80px;
+  padding-top: 100px;
+}
+@media(min-width: 1024px) {
+  #hero {
+    justify-content: center;
+    padding-top: 120px;
+  }
 }
 .hero-wash {
   position: absolute;
@@ -1322,7 +1328,13 @@ footer {
   .edition-grid-inner {
     display: flex !important;
     flex-direction: column !important;
-    gap: 32px !important;
+    gap: 24px !important;
+  }
+  .edition-poster-col {
+    order: 1 !important;
+  }
+  .edition-content-col {
+    order: 2 !important;
   }
 }
 

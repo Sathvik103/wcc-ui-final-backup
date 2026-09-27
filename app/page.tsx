@@ -52,9 +52,9 @@ export default function Home() {
 
       {/* 9. CTA Countdown Timer */}
       <ClosingRegistration />
-      {/* 3. The Scale of Winter Coding Contest 
+      {/* 3. The Scale of Winter Coding Contest  */}
       <ScaleSection />
-      */}
+
 
       {/* 4. Heritage / Evolution Across 6 Flagship Editions */}
       <EditionsSection />

@@ -178,7 +178,7 @@ export default function PrizesSection() {
           </div>
         </div>
 
-        {/* GOODIES BOX */}
+        {/* GOODIES BOX 
         <div className="goodies-box reveal">
           <div className="goodies-text">
             <h4>ANYTHING ELSE?</h4>
@@ -207,6 +207,7 @@ export default function PrizesSection() {
             GOODIES &amp; SWAG KITS
           </div>
         </div>
+        */}
       </div>
     </section>
   );

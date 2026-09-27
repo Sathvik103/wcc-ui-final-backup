@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 
 const photos = [
@@ -13,6 +13,16 @@ const photos = [
 ];
 
 export default function GallerySection() {
+  const [selectedPhoto, setSelectedPhoto] = useState<(typeof photos)[0] | null>(null);
+
+  useEffect(() => {
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setSelectedPhoto(null);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, []);
+
   return (
     <section id="archive" className="section !py-20 sm:!py-28 bg-[#fdfdfc] overflow-hidden">
       <div className="wrap section-head reveal mx-auto flex flex-col items-center justify-center text-center px-4 w-full mb-16">
@@ -33,13 +43,23 @@ export default function GallerySection() {
           {photos.map((photo, i) => (
             <div
               key={"p1-" + i}
-              className="relative overflow-hidden rounded-xl border-2 border-ink shadow-[4px_4px_0px_var(--ink)] bg-white w-[280px] sm:w-[380px] md:w-[440px] aspect-[4/3] shrink-0 mx-3 sm:mx-5 inline-block group/card transition-transform duration-300 hover:-translate-y-2 hover:shadow-[8px_8px_0px_var(--ink)] cursor-grab active:cursor-grabbing"
+              onClick={() => setSelectedPhoto(photo)}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  setSelectedPhoto(photo);
+                }
+              }}
+              aria-label={`View ${photo.caption}`}
+              className="relative overflow-hidden rounded-xl border-2 border-ink shadow-[4px_4px_0px_var(--ink)] bg-white w-[280px] sm:w-[360px] md:w-[420px] aspect-[4/3] shrink-0 mr-5 sm:mr-6 inline-block group/card transition-transform duration-300 hover:-translate-y-2 hover:shadow-[8px_8px_0px_var(--ink)] cursor-pointer"
             >
               <Image
                 src={photo.img}
                 alt={photo.alt}
                 fill
-                sizes="(max-width: 768px) 280px, 440px"
+                sizes="(max-width: 768px) 280px, 420px"
                 className="object-cover transition-transform duration-700 group-hover/card:scale-105"
                 priority={i < 3}
                 loading={i < 3 ? "eager" : "lazy"}
@@ -56,13 +76,23 @@ export default function GallerySection() {
           {photos.map((photo, i) => (
             <div
               key={"p2-" + i}
-              className="relative overflow-hidden rounded-xl border-2 border-ink shadow-[4px_4px_0px_var(--ink)] bg-white w-[280px] sm:w-[380px] md:w-[440px] aspect-[4/3] shrink-0 mx-3 sm:mx-5 inline-block group/card transition-transform duration-300 hover:-translate-y-2 hover:shadow-[8px_8px_0px_var(--ink)] cursor-grab active:cursor-grabbing"
+              onClick={() => setSelectedPhoto(photo)}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  setSelectedPhoto(photo);
+                }
+              }}
+              aria-label={`View ${photo.caption}`}
+              className="relative overflow-hidden rounded-xl border-2 border-ink shadow-[4px_4px_0px_var(--ink)] bg-white w-[280px] sm:w-[360px] md:w-[420px] aspect-[4/3] shrink-0 mr-5 sm:mr-6 inline-block group/card transition-transform duration-300 hover:-translate-y-2 hover:shadow-[8px_8px_0px_var(--ink)] cursor-pointer"
             >
               <Image
                 src={photo.img}
                 alt={photo.alt}
                 fill
-                sizes="(max-width: 768px) 280px, 440px"
+                sizes="(max-width: 768px) 280px, 420px"
                 className="object-cover transition-transform duration-700 group-hover/card:scale-105"
                 loading="lazy"
               />
@@ -76,6 +106,59 @@ export default function GallerySection() {
           ))}
         </div>
       </div>
+
+      {/* Expanded Modal View on Image Click */}
+      {selectedPhoto && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/80 backdrop-blur-sm transition-opacity"
+          onClick={() => setSelectedPhoto(null)}
+          role="dialog"
+          aria-modal="true"
+          aria-label={selectedPhoto.caption}
+        >
+          <div
+            className="relative bg-white border-2 border-ink rounded-2xl shadow-[8px_8px_0px_var(--ink)] max-w-2xl w-full overflow-hidden flex flex-col"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close Button */}
+            <button
+              onClick={() => setSelectedPhoto(null)}
+              className="absolute top-3 right-3 z-10 w-9 h-9 border-2 border-ink rounded-lg bg-white shadow-[2px_2px_0px_var(--ink)] flex items-center justify-center font-bold text-ink hover:bg-[#f5f3ee] hover:text-coral active:translate-x-[1px] active:translate-y-[1px] transition-all cursor-pointer"
+              aria-label="Close modal"
+            >
+              ✕
+            </button>
+
+            {/* Expanded Image */}
+            <div className="relative w-full aspect-[16/10] sm:aspect-[16/9] bg-ink/5">
+              <Image
+                src={selectedPhoto.img}
+                alt={selectedPhoto.alt}
+                fill
+                sizes="(max-width: 768px) 90vw, 680px"
+                className="object-contain"
+                priority
+              />
+            </div>
+
+            {/* Expanded Caption with comfortable padding */}
+            <div className="!p-6 sm:!p-8 border-t-2 border-ink/10 bg-[#faf9f6] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div>
+                <span className="text-[11px] font-mono font-bold tracking-widest text-coral uppercase block !mb-1.5">
+                  ARCHIVE // WCC
+                </span>
+                <h4 className="font-display font-bold text-lg sm:text-xl text-ink">
+                  {selectedPhoto.caption}
+                </h4>
+              </div>
+              <p className="text-xs sm:text-sm text-dim">
+                {selectedPhoto.alt}
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
+
