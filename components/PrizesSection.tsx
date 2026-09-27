@@ -14,8 +14,8 @@ export default function PrizesSection() {
 
         {/* PODIUM: silver(left) | gold(center) | bronze(right) */}
         <div className="prizes-stage reveal">
-          {/* 2ND PLACE (LEFT) */}
-          <div className="prize-card-wrap card-silver">
+          {/* 2ND PLACE (LEFT on desktop, 2nd on mobile) */}
+          <div className="prize-card-wrap card-silver order-2 md:order-1">
             <div className="prize-card">
               <div className="prize-card-top">
                 <div className="prize-icon-wrap">
@@ -56,8 +56,8 @@ export default function PrizesSection() {
             <div className="prize-sublabel">1ST RUNNERS UP</div>
           </div>
 
-          {/* 1ST PLACE (CENTER) */}
-          <div className="prize-card-wrap card-gold">
+          {/* 1ST PLACE (CENTER on desktop, 1st on mobile) */}
+          <div className="prize-card-wrap card-gold order-1 md:order-2">
             <div className="prize-card">
               <div className="prize-card-top">
                 <div className="prize-icon-wrap">
@@ -94,8 +94,8 @@ export default function PrizesSection() {
             <div className="prize-sublabel">WINNERS</div>
           </div>
 
-          {/* 3RD PLACE (RIGHT) */}
-          <div className="prize-card-wrap card-bronze">
+          {/* 3RD PLACE (RIGHT on desktop, 3rd on mobile) */}
+          <div className="prize-card-wrap card-bronze order-3 md:order-3">
             <div className="prize-card">
               <div className="prize-card-top">
                 <div className="prize-icon-wrap">
