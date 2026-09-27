@@ -32,7 +32,7 @@ export default function ContactsSection() {
           {/* FACULTY COORDINATOR */}
           <div
             style={{ padding: "36px 32px" }}
-            className="bg-white border-2 border-ink rounded-2xl shadow-[6px_6px_0px_var(--ink)] flex flex-col justify-between h-[330px] transition-transform duration-200 hover:-translate-y-1 hover:shadow-[8px_8px_0px_var(--ink)]"
+            className="bg-white border-2 border-ink rounded-2xl shadow-[6px_6px_0px_var(--ink)] flex flex-col justify-between h-[240px] sm:h-[330px] transition-transform duration-200 hover:-translate-y-1 hover:shadow-[8px_8px_0px_var(--ink)]"
           >
             <div>
 
@@ -75,7 +75,7 @@ export default function ContactsSection() {
             <div>
 
               {/* Category Pill */}
-              <div className="mb-6 flex justify-center">
+              <div className="mb-10 flex justify-center">
                 <span className="inline-block text-[10px] font-mono font-bold tracking-widest text-coral uppercase bg-coral/10 border border-coral/25 rounded-full !px-7 !py-4">
                   STUDENT COORDINATORS
                 </span>
@@ -138,7 +138,7 @@ export default function ContactsSection() {
 <div className="!pt-7">
   {/* Find Us Header */}
   <div className="px-5 text-center">
-    <span className="inline-block text-[11px] font-mono font-bold tracking-widest text-coral uppercase bg-coral/10 border border-coral/25 rounded-full !px-6 !py-4">
+    <span className="inline-block mb-10 text-[11px] font-mono font-bold tracking-widest text-coral uppercase bg-coral/10 border border-coral/25 rounded-full !px-6 !py-4">
       FIND US
     </span>
 
