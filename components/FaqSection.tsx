@@ -17,7 +17,7 @@ const faqs = [
   },
   {
     q: "Where is Round 2 held?",
-    a: "Sunday, 11 Oct 2026 at VNRVJIET's CS & IT Labs, Bachupally, Hyderabad. Transit details go to the 150+ shortlisted qualifiers.",
+    a: "Thursday, 22 Oct 2026 at VNRVJIET's CS & IT Labs, Bachupally, Hyderabad. Transit details go to the 150+ shortlisted qualifiers.",
   },
 ];
 

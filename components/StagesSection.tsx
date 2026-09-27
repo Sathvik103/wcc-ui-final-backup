@@ -147,8 +147,8 @@ export default function StagesSection() {
                     <span className="dot"></span>01 · NATIONAL REGISTRATION
                   </div>
                   <h3>National Registration</h3>
-                  <p>Register solo or in duos on Unstop. Round 1 is completely free for every student in India.</p>
-                  <div className="curved-date">ELIGIBILITY · ALL UG &amp; PG STUDENTS · UNTIL 24 SEPT</div>
+                  <p>Register solo or in duos on Unstop. Registration Fee: ₹300 per team.</p>
+                  <div className="curved-date">DEADLINE — 11 OCT 2026 (EXT. 12 OCT)</div>
                   <div>
                     <a className="map-link-btn" href="https://unstop.com" target="_blank" rel="noopener noreferrer">
                       REGISTER ON UNSTOP →
@@ -169,7 +169,7 @@ export default function StagesSection() {
                   </div>
                   <h3>Round 1 — Virtual Arena</h3>
                   <p>Proctored on HackerEarth, 9:00 AM–4:40 PM. Data Structures, DP, Math and Graph problems.</p>
-                  <div className="curved-date">MODE · FULLY ONLINE · 09 OCT 2026</div>
+                  <div className="curved-date">MODE · FULLY ONLINE · 13 OCT 2026</div>
                   <div>
                     <a className="map-link-btn" href="https://HackerEarth.com" target="_blank" rel="noopener noreferrer">
                       HackerEarth PORTAL →
@@ -189,8 +189,8 @@ export default function StagesSection() {
                     <span className="dot"></span>03 · AUDIT &amp; SHORTLISTING
                   </div>
                   <h3>Audit &amp; Shortlisting</h3>
-                  <p>Automated plagiarism and similarity audits. Top 150+ coders receive campus invitations.</p>
-                  <div className="curved-date">MERIT RANKLIST PUBLISHED · 10 OCT 2026</div>
+                  <p>Automated plagiarism and similarity audits. Top 70 teams shortlisted for the campus finale.</p>
+                  <div className="curved-date">MERIT RANKLIST PUBLISHED AFTER ROUND 1</div>
                 </div>
                 <div className="card-mask"></div>
               </div>
@@ -206,7 +206,7 @@ export default function StagesSection() {
                   </div>
                   <h3>Round 2 — Campus Finale</h3>
                   <p>In-person battle at VNRVJIET&apos;s HPC labs, followed by the valedictory awards ceremony.</p>
-                  <div className="curved-date">LOCATION · VNRVJIET, HYDERABAD · 11 OCT 2026</div>
+                  <div className="curved-date">LOCATION · VNRVJIET, HYDERABAD · 22 OCT 2026</div>
                   <div>
                     <a
                       className="map-link-btn"

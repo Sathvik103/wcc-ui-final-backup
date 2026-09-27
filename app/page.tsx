@@ -10,6 +10,7 @@ import StagesSection from "@/components/StagesSection";
 import PrizesSection from "@/components/PrizesSection";
 import FaqSection from "@/components/FaqSection";
 import PartnersSection from "@/components/PartnersSection";
+import ContactsSection from "@/components/ContactsSection";
 import ClosingRegistration from "@/components/ClosingRegistration";
 import Footer from "@/components/Footer";
 import IntroAnimation from "@/components/IntroAnimation";
@@ -72,6 +73,9 @@ export default function Home() {
 
       {/* 8. Ecosystem Partners Marquee */}
       <PartnersSection />
+
+      {/* 9. Contacts Section */}
+      <ContactsSection />
 
 
 

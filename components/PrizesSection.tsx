@@ -9,13 +9,51 @@ export default function PrizesSection() {
         <div className="section-head reveal">
           <span className="prizes-header-badge">PRIZES</span>
           <h2>Recognitions &amp; rewards.</h2>
-          <p>A prize pool of ₹50,000+ awarded to top national algorithmic problem-solvers.</p>
+          <p>A prize pool of ₹55,000 awarded to top national algorithmic problem-solvers.</p>
         </div>
 
         {/* PODIUM: silver(left) | gold(center) | bronze(right) */}
         <div className="prizes-stage reveal">
+          {/* 1ST PLACE (CENTER on desktop, 1st on mobile) */}
+          <div className="prize-card-wrap card-gold ">
+            <div className="prize-card">
+              <div className="prize-card-top">
+                <div className="prize-icon-wrap">
+                  <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M16 6H32V26C32 31.523 28.418 35 24 35C19.582 35 16 31.523 16 26V6Z"
+                      fill="#fde68a"
+                      stroke="#c9960a"
+                      strokeWidth="2"
+                      strokeLinejoin="round"
+                    />
+                    <path d="M16 10H10C10 10 8 20 16 22" stroke="#c9960a" strokeWidth="2" strokeLinecap="round" />
+                    <path d="M32 10H38C38 10 40 20 32 22" stroke="#c9960a" strokeWidth="2" strokeLinecap="round" />
+                    <rect x="20" y="35" width="8" height="4" fill="#c9960a" rx="1" />
+                    <rect x="15" y="39" width="18" height="3" fill="#c9960a" rx="1.5" />
+                    <circle cx="24" cy="20" r="4" fill="#c9960a" opacity="0.35" />
+                    <path
+                      d="M22 20 L23.2 22.4 L26 22.8 L24 24.7 L24.4 27.5 L22 26.2 L19.6 27.5 L20 24.7 L18 22.8 L20.8 22.4Z"
+                      fill="#c9960a"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <div className="prize-card-bottom">
+                <div className="prize-rank-tag">WINNERS</div>
+                <div className="prize-title">
+                  FIRST
+                  <br />
+                  PRIZE
+                </div>
+                <div className="prize-amount">₹20,000</div>
+              </div>
+            </div>
+            <div className="prize-sublabel">WINNERS</div>
+          </div>
+
           {/* 2ND PLACE (LEFT on desktop, 2nd on mobile) */}
-          <div className="prize-card-wrap card-silver order-2 md:order-1">
+          <div className="prize-card-wrap card-silver ">
             <div className="prize-card">
               <div className="prize-card-top">
                 <div className="prize-icon-wrap">
@@ -56,46 +94,8 @@ export default function PrizesSection() {
             <div className="prize-sublabel">1ST RUNNERS UP</div>
           </div>
 
-          {/* 1ST PLACE (CENTER on desktop, 1st on mobile) */}
-          <div className="prize-card-wrap card-gold order-1 md:order-2">
-            <div className="prize-card">
-              <div className="prize-card-top">
-                <div className="prize-icon-wrap">
-                  <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path
-                      d="M16 6H32V26C32 31.523 28.418 35 24 35C19.582 35 16 31.523 16 26V6Z"
-                      fill="#fde68a"
-                      stroke="#c9960a"
-                      strokeWidth="2"
-                      strokeLinejoin="round"
-                    />
-                    <path d="M16 10H10C10 10 8 20 16 22" stroke="#c9960a" strokeWidth="2" strokeLinecap="round" />
-                    <path d="M32 10H38C38 10 40 20 32 22" stroke="#c9960a" strokeWidth="2" strokeLinecap="round" />
-                    <rect x="20" y="35" width="8" height="4" fill="#c9960a" rx="1" />
-                    <rect x="15" y="39" width="18" height="3" fill="#c9960a" rx="1.5" />
-                    <circle cx="24" cy="20" r="4" fill="#c9960a" opacity="0.35" />
-                    <path
-                      d="M22 20 L23.2 22.4 L26 22.8 L24 24.7 L24.4 27.5 L22 26.2 L19.6 27.5 L20 24.7 L18 22.8 L20.8 22.4Z"
-                      fill="#c9960a"
-                    />
-                  </svg>
-                </div>
-              </div>
-              <div className="prize-card-bottom">
-                <div className="prize-rank-tag">WINNERS</div>
-                <div className="prize-title">
-                  FIRST
-                  <br />
-                  PRIZE
-                </div>
-                <div className="prize-amount">₹25,000</div>
-              </div>
-            </div>
-            <div className="prize-sublabel">WINNERS</div>
-          </div>
-
           {/* 3RD PLACE (RIGHT on desktop, 3rd on mobile) */}
-          <div className="prize-card-wrap card-bronze order-3 md:order-3">
+          <div className="prize-card-wrap card-bronze ">
             <div className="prize-card">
               <div className="prize-card-top">
                 <div className="prize-icon-wrap">
@@ -153,7 +153,7 @@ export default function PrizesSection() {
             </div>
             <div className="consolation-body">
               <div className="consolation-tag">★ SPECIAL MERIT · RANK 4</div>
-              <h4>Consolation Prize 1</h4>
+              <h4>₹6,000</h4>
               <p>Cash reward, Certificate of Merit &amp; official ACM accolades.</p>
             </div>
           </div>
@@ -172,7 +172,7 @@ export default function PrizesSection() {
             </div>
             <div className="consolation-body">
               <div className="consolation-tag">★ SPECIAL MERIT · RANK 5</div>
-              <h4>Consolation Prize 2</h4>
+              <h4>₹4,000</h4>
               <p>Cash reward, Certificate of Merit &amp; official ACM accolades.</p>
             </div>
           </div>

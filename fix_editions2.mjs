@@ -1,52 +1,60 @@
-"use client";
+import fs from 'fs';
+
+const c = `"use client";
 
 import React, { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 
-const editionsOrder = ["6.0", "5.0", "4.0", "3.0", "2.0", "1.0"];
+type EditionKey = "6.0" | "5.0" | "4.0" | "3.0" | "2.0" | "1.0";
+const editionsOrder: EditionKey[] = ["6.0", "5.0", "4.0", "3.0", "2.0", "1.0"];
 
-const editionData: Record<string, {
+interface EditionLink { label: string; url: string; }
+interface EditionMetric { label: string; val: string; }
+
+interface EditionInfo {
   pill: string;
   title: string;
   desc: string;
   poster: string;
-  metrics: { label: string; val: string }[];
-  links: { label: string; url: string }[];
-}> = {
+  metrics: EditionMetric[];
+  links: EditionLink[];
+}
+
+const editionData: Record<EditionKey, EditionInfo> = {
   "6.0": {
-    pill: "The Next Evolution",
+    pill: "THE NEXT EVOLUTION",
     title: "Winter Coding Contest 6.0",
     desc: "The sixth flagship edition. Expanding further with official proctored arena infrastructure and nationwide outreach.",
     poster: "/assets/images/poster_6_0.png",
     metrics: [
       { label: "EXPECTED CODERS", val: "6,000+" },
       { label: "INSTITUTIONS", val: "500+" },
-      { label: "PRIZE POOL", val: "₹55,000" },
+      { label: "PRIZE POOL", val: "₹1,50,000+" },
     ],
     links: []
   },
   "5.0": {
     pill: "WCC 5.0",
     title: "Winter Coding Contest 5.0",
-    desc: "The 5th Edition became a national phenomenon, scaling massive concurrent participation across the country and raising the standard of competitive programming.",
-    poster: "/assets/WCC 5.0.png",
+    desc: "Winter Coding Contest 5.0 was a coding event organized by Team ACM VNRVJIET, providing students with an opportunity to test their programming and problem-solving skills through a series of coding challenges. The event featured multiple rounds and encouraged participants to apply their knowledge, explore different approaches, and enhance their coding abilities.",
+    poster: "/assets/WCC 5.0(2).png",
     metrics: [
       { label: "IMPRESSIONS", val: "80K" },
       { label: "REGISTRATIONS", val: "4.8K" },
       { label: "PARTICIPANTS", val: "4791" },
-      { label: "PRIZE POOL", val: "₹50,000/-" }
+      { label: "PRIZE POOL", val: "₹50,000/-" },
     ],
     links: [
-      { label: "Round 1", url: "https://www.hackerrank.com/acm-winter-coding-contest-5-0" },
-      { label: "Round 2", url: "https://www.hackerrank.com/acm-winter-coding-contest-5-0-final-round" },
-      { label: "Unstop", url: "https://unstop.com/hackathons/acm-vnrvjiets-winter-coding-contest-50-vallurupalli-nageswara-rao-vignana-jyothi-institute-of-engineering-t-827178" }
+      { label: "Round 1", url: "https://www.hackerrank.com/acms-winter-coding-contest-5-0-round-1" },
+      { label: "Round 2", url: "https://www.hackerrank.com/acms-winter-coding-contest-5-0-final-round" },
+      { label: "Unstop", url: "https://unstop.com/hackathons/winter-coding-contest-50-acm-student-chapter-vnrvjiet-1570001" }
     ]
   },
   "4.0": {
     pill: "WCC 4.0",
     title: "Winter Coding Contest 4.0",
-    desc: "The 4th Edition of the Winter Coding Contest saw a huge surge with over 4,500 participants across India. It also achieved significant engagement with over 60,000 impressions on Unstop, solidifying its position as a major coding event.",
+    desc: "The 4th Edition of the Winter Coding Contest was another remarkable event, showcasing the talent and dedication of participants. With an even larger pool of contestants and a diverse range of problems, the competition pushed boundaries and set new standards.",
     poster: "/assets/WCC 4.0 FINAL.png",
     metrics: [],
     links: [
@@ -119,7 +127,7 @@ export default function EditionsSection() {
         </div>
 
         {/* Inline Edition Switcher */}
-        <div className="flex justify-center items-center gap-8 mb-8 sm:mb-10 reveal">
+        <div className="flex justify-center items-center gap-8 mb-16 sm:mb-20 reveal">
           <button onClick={goPrev} className="p-3 text-dim hover:text-coral transition-colors font-bold text-2xl flex items-center justify-center rounded-full hover:bg-black/5" aria-label="Previous edition">
             ←
           </button>
@@ -131,8 +139,8 @@ export default function EditionsSection() {
           </button>
         </div>
 
-        {/* Dynamic Edition Card — override CSS reset with inline styles */}
-        <div className="reveal relative max-w-[1060px] mx-auto bg-white border-2 border-ink shadow-[8px_8px_0px_var(--ink)] rounded-2xl" style={{ display: 'block', padding: '40px' }}>
+        {/* Dynamic Edition Card */}
+        <div className="heritage-card reveal !p-8 sm:!p-14 min-h-[460px] relative max-w-5xl mx-auto border-2 border-ink shadow-[8px_8px_0px_var(--ink)] bg-white rounded-2xl">
           <AnimatePresence mode="wait">
             <motion.div 
               key={currentVer}
@@ -140,31 +148,28 @@ export default function EditionsSection() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.98, y: -10 }}
               transition={{ duration: 0.25, ease: "easeInOut" }}
-              style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) 380px', gap: '48px', alignItems: 'start' }}
-              className="edition-grid-inner"
+              className="flex flex-col sm:flex-row gap-10 sm:gap-16 w-full"
             >
-              
-              {/* LEFT COLUMN - TEXT & METRICS */}
-              <div className="flex flex-col justify-start min-h-full">
-                <span className="text-[11px] font-bold tracking-widest text-coral uppercase mb-4 inline-block">{current.pill}</span>
-                <h3 className="text-3xl sm:text-[38px] font-display font-extrabold text-ink mb-5 leading-[1.1]">{current.title}</h3>
-                <p className="text-[16px] sm:text-[17px] font-medium text-dim leading-[1.7] mb-8 text-left sm:text-justify">{current.desc}</p>
+              <div className="heritage-left flex-1 flex flex-col justify-center">
+                <span className="heritage-pill text-[11px] font-bold tracking-widest text-coral uppercase mb-5 inline-block">{current.pill}</span>
+                <h3 className="text-3xl sm:text-4xl font-display font-extrabold text-ink mb-6 leading-tight">{current.title}</h3>
+                <p className="text-[16px] sm:text-[17px] text-dim leading-[1.7] mb-8 max-w-[500px]">{current.desc}</p>
 
                 {current.metrics && current.metrics.length > 0 && (
-                  <div className="grid grid-cols-2 gap-y-5 gap-x-8 mb-8">
+                  <div className="grid grid-cols-2 gap-y-6 gap-x-4 mb-8">
                     {current.metrics.map(m => (
                       <div key={m.label}>
                         <div className="text-[10px] sm:text-[11px] font-bold tracking-widest text-dim uppercase mb-1">{m.label}</div>
-                        <div className="text-xl sm:text-[22px] font-display font-bold text-ink">{m.val}</div>
+                        <div className="text-xl sm:text-2xl font-display font-bold text-ink">{m.val}</div>
                       </div>
                     ))}
                   </div>
                 )}
 
                 {current.links.length > 0 && (
-                  <div className="mt-auto pt-6 border-t border-ink/10 flex flex-row gap-5 whitespace-nowrap items-center overflow-x-auto hide-scrollbar">
+                  <div className="mt-auto pt-6 border-t-2 border-ink/10 flex flex-wrap sm:flex-nowrap gap-x-6 gap-y-4 whitespace-normal sm:whitespace-nowrap items-center">
                     {current.links.map(link => (
-                      <a key={link.label} href={link.url} target="_blank" rel="noopener noreferrer" className="font-bold text-[13px] text-ink hover:text-coral transition-colors flex items-center gap-1.5 uppercase tracking-widest shrink-0">
+                      <a key={link.label} href={link.url} target="_blank" rel="noopener noreferrer" className="font-bold text-[13px] text-ink hover:text-coral transition-colors flex items-center gap-1.5 uppercase tracking-widest">
                         {link.label} <span className="text-[14px]">↗</span>
                       </a>
                     ))}
@@ -172,19 +177,18 @@ export default function EditionsSection() {
                 )}
               </div>
 
-              {/* RIGHT COLUMN - POSTER */}
-              <div className="flex flex-col items-center sm:items-end justify-start w-full max-w-[380px] mx-auto sm:max-w-none sm:mx-0">
-                <div className="relative bg-[#fbfaf9] border-2 border-ink shadow-[4px_4px_0px_rgba(0,0,0,0.1)] w-full aspect-[4/5] overflow-hidden rounded-xl">
+              <div className="heritage-right w-full sm:w-[340px] shrink-0 mt-8 sm:mt-0 flex flex-col items-center justify-center">
+                <div className="text-[11px] font-bold tracking-widest text-dim uppercase mb-4 w-full text-center">OFFICIAL POSTER</div>
+                <div className="relative bg-[#f7f6f3] border-2 border-ink shadow-[4px_4px_0px_rgba(0,0,0,0.1)] w-full aspect-[4/5] mx-auto overflow-hidden rounded-xl p-3">
                   <Image
                     src={current.poster}
-                    alt={`${current.title} Poster`}
+                    alt={\`\${current.title} Poster\`}
                     fill
-                    sizes="380px"
+                    sizes="(max-width: 768px) 100vw, 340px"
                     className="object-contain p-3"
                   />
                 </div>
               </div>
-
             </motion.div>
           </AnimatePresence>
         </div>
@@ -192,3 +196,7 @@ export default function EditionsSection() {
     </section>
   );
 }
+`;
+
+fs.writeFileSync('components/EditionsSection.tsx', c, 'utf8');
+console.log('EditionsSection rewritten!');

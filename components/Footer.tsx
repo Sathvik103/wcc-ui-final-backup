@@ -18,7 +18,7 @@ export default function Footer() {
             />
             <h4 className="mono">ACM VNRVJIET</h4>
             <p>
-              Student Chapter, Dept. of Information Technology — VNR Vignana Jyothi Institute of Engineering and Technology. NAAC A++, AICTE recognized.
+              Student Chapter — VNR Vignana Jyothi Institute of Engineering and Technology. NAAC A++, AICTE recognized.
             </p>
             <p>Bachupally, Nizampet (S.O), Hyderabad, Telangana 500090</p>
           </div>
@@ -33,14 +33,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="mono">CONTACT</h4>
-            <div style={{ marginBottom: "16px" }}>
-              <span style={{ display: "block", color: "var(--coral)", fontSize: "0.85em", fontWeight: 700, marginBottom: "4px" }}>FACULTY COORDINATOR</span>
-              <span style={{ display: "block", fontWeight: 600 }}>Mr. Murali Mohan Samineni</span>
-              <a href="mailto:muralimohan_s@vnrvjiet.in" style={{ display: "block", marginTop: "2px", opacity: 0.8 }}>muralimohan_s@vnrvjiet.in</a>
-            </div>
-            
-            <h4 className="mono" style={{ marginTop: "24px" }}>CHANNELS</h4>
+            <h4 className="mono">CHANNELS</h4>
             <a href="https://github.com/acmvnrvjiet" target="_blank" rel="noopener noreferrer">
               GitHub
             </a>

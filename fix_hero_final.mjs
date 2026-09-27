@@ -1,4 +1,6 @@
-"use client";
+import fs from 'fs';
+
+const code = `"use client";
 
 import React, { useRef } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
@@ -6,60 +8,79 @@ import Image from "next/image";
 
 function InteractivePoster() {
   const ref = useRef<HTMLDivElement>(null);
-  const x = useMotionValue(0.5);
-  const y = useMotionValue(0.5);
+  
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
 
-  const springConfig = { damping: 25, stiffness: 150 };
-  const springX = useSpring(x, springConfig);
-  const springY = useSpring(y, springConfig);
+  const mouseXSpring = useSpring(x, { stiffness: 150, damping: 20 });
+  const mouseYSpring = useSpring(y, { stiffness: 150, damping: 20 });
 
-  // Very subtle range: -3deg to 3deg
-  const rotateX = useTransform(springY, [0, 1], [3, -3]);
-  const rotateY = useTransform(springX, [0, 1], [-3, 3]);
-
+  const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["8deg", "-8deg"]);
+  const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-8deg", "8deg"]);
+  
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (window.matchMedia("(hover: none)").matches) return;
     if (!ref.current) return;
     const rect = ref.current.getBoundingClientRect();
-    x.set((e.clientX - rect.left) / rect.width);
-    y.set((e.clientY - rect.top) / rect.height);
+    const width = rect.width;
+    const height = rect.height;
+    const mouseX = (e.clientX - rect.left) / width - 0.5;
+    const mouseY = (e.clientY - rect.top) / height - 0.5;
+    x.set(mouseX);
+    y.set(mouseY);
   };
 
   const handleMouseLeave = () => {
-    x.set(0.5);
-    y.set(0.5);
+    x.set(0);
+    y.set(0);
   };
 
   return (
-    <div className="w-full max-w-[440px] mx-auto lg:mr-0 lg:ml-auto mt-12 lg:mt-0" style={{ perspective: 1200 }}>
+    <div className="perspective-[1000px] w-full max-w-[480px] mx-auto lg:mr-0 lg:ml-auto mt-12 lg:mt-0">
       <motion.div
         ref={ref}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
-        style={{ rotateX, rotateY, padding: '24px', transformStyle: "preserve-3d" }}
-        className="relative w-full bg-white rounded-[28px] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] border border-black/5 flex flex-col"
+        style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
+        className="relative w-full bg-white rounded-3xl p-5 sm:p-6 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.1)] border border-black/5"
       >
-        <div className="relative w-full aspect-[4/5] overflow-hidden rounded-xl">
+        <div className="relative w-full aspect-[4/5] rounded-xl overflow-hidden bg-[#fbfaf9] mb-5">
+          {/* Floating Badges */}
+          <div className="absolute top-3 left-3 bg-[#1e2330] text-white font-bold text-[10px] sm:text-[11px] tracking-widest px-3.5 py-1.5 rounded-full z-10 uppercase shadow-sm">
+            Edition 6.0
+          </div>
+          <div className="absolute top-3 right-3 bg-[#10b981] text-white font-bold text-[10px] sm:text-[11px] tracking-widest px-3.5 py-1.5 rounded-full z-10 uppercase shadow-sm">
+            100% FREE ROUND 1
+          </div>
+
           <Image 
             src="/assets/images/poster_6_0.png" 
             alt="WCC 6.0 Official Poster" 
             fill 
-            className="object-contain pointer-events-none"
+            className="object-contain"
             priority
             sizes="(max-width: 768px) 100vw, 440px"
           />
         </div>
         
-        {/* Increased margin to mt-8 for breathing room */}
-        <div className="flex flex-col sm:flex-row gap-4 w-full mt-8">
-          <div className="flex-1 bg-white border border-ink/10 rounded-xl p-3 sm:p-4 text-left shadow-sm">
-            <div className="text-[10px] sm:text-[11px] font-bold tracking-widest text-ink uppercase mb-1.5 opacity-60">Round 1 (Online)</div>
-            <div className="text-[13px] sm:text-[14px] font-bold text-ink leading-tight">13 OCT 2026</div>
+        <div className="flex flex-col sm:flex-row gap-3 w-full">
+          <div className="flex-1 bg-[#fffaf5] border border-[#fcd5b5] rounded-xl p-3 sm:p-4 text-left">
+            <div className="text-[10px] sm:text-[11px] font-bold tracking-widest text-[#ff5f40] uppercase mb-1.5">Round 1 (Online)</div>
+            <div className="text-[13px] sm:text-[14px] font-bold text-[#4a3f35] leading-tight">09 OCT 2026 • 9:00 AM</div>
           </div>
-          <div className="flex-1 bg-white border border-ink/10 rounded-xl p-3 sm:p-4 text-left shadow-sm">
-            <div className="text-[10px] sm:text-[11px] font-bold tracking-widest text-ink uppercase mb-1.5 opacity-60">Round 2 (Campus)</div>
-            <div className="text-[13px] sm:text-[14px] font-bold text-ink leading-tight">22 OCT 2026</div>
+          <div className="flex-1 bg-[#f4f7fa] border border-[#e2e8f0] rounded-xl p-3 sm:p-4 text-left">
+            <div className="text-[10px] sm:text-[11px] font-bold tracking-widest text-[#64748b] uppercase mb-1.5">Round 2 (Campus)</div>
+            <div className="text-[13px] sm:text-[14px] font-bold text-[#334155] leading-tight">11 OCT 2026 • VNRVJIET</div>
           </div>
         </div>
+
+        <motion.div 
+          className="absolute inset-0 bg-gradient-to-tr from-transparent via-[rgba(255,255,255,0.4)] to-transparent pointer-events-none rounded-3xl"
+          style={{
+            x: useTransform(mouseXSpring, [-0.5, 0.5], ["-50%", "50%"]),
+            y: useTransform(mouseYSpring, [-0.5, 0.5], ["-50%", "50%"]),
+          }}
+        />
       </motion.div>
     </div>
   );
@@ -109,7 +130,7 @@ export default function HeroSection({ introComplete = true }: { introComplete?: 
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                REGISTER NOW <span className="text-[16px]">↗</span>
+                REGISTER FOR FREE <span className="text-[16px]">↗</span>
               </a>
               <a className="font-bold text-[15px] text-dim hover:text-coral transition-colors border-b-2 border-ink pb-0.5 tracking-wide text-center mt-2 sm:mt-0" href="#format">
                 See how it works
@@ -126,3 +147,7 @@ export default function HeroSection({ introComplete = true }: { introComplete?: 
     </section>
   );
 }
+`;
+
+fs.writeFileSync('components/HeroSection.tsx', code, 'utf8');
+console.log('HeroSection rewritten');

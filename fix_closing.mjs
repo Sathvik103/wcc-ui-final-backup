@@ -1,4 +1,6 @@
-"use client";
+import fs from 'fs';
+
+const c = `"use client";
 
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -39,7 +41,7 @@ export default function ClosingRegistration() {
 
   useEffect(() => {
     setIsMounted(true);
-    const targetTime = new Date("2026-10-12T20:00:00+05:30").getTime();
+    const targetTime = new Date("2026-10-09T09:00:00+05:30").getTime();
 
     const updateTimer = () => {
       const diff = targetTime - Date.now();
@@ -73,7 +75,7 @@ export default function ClosingRegistration() {
           READY TO COMPETE AT THE NATIONAL LEVEL?
         </h2>
         <p className="text-[16px] sm:text-[18px] font-medium opacity-90 mb-12 sm:mb-16">
-          6,000+ coders. A virtual qualifier. A campus finale in Hyderabad.
+          6,000+ coders. One free qualifier. A campus finale in Hyderabad.
         </p>
 
         {isMounted && (
@@ -102,3 +104,7 @@ export default function ClosingRegistration() {
     </section>
   );
 }
+`;
+
+fs.writeFileSync('components/ClosingRegistration.tsx', c, 'utf8');
+console.log('ClosingRegistration rewritten!');

@@ -1,4 +1,6 @@
-"use client";
+import fs from 'fs';
+
+const c = `"use client";
 
 import React from "react";
 import Image from "next/image";
@@ -28,11 +30,11 @@ export default function GallerySection() {
       </div>
 
       <div className="w-full relative py-8 group">
-        <div className="flex w-[max-content] animate-marquee whitespace-nowrap hover:pause">
+        <div className="flex w-[200%] sm:w-[max-content] animate-marquee whitespace-nowrap hover:pause">
           {/* First set */}
           {photos.map((photo, i) => (
             <div
-              key={"p1-" + i}
+              key={\`p1-\${i}\`}
               className="relative overflow-hidden rounded-xl border-2 border-ink shadow-[4px_4px_0px_var(--ink)] bg-white w-[280px] sm:w-[380px] md:w-[440px] aspect-[4/3] shrink-0 mx-3 sm:mx-5 inline-block group/card transition-transform duration-300 hover:-translate-y-2 hover:shadow-[8px_8px_0px_var(--ink)] cursor-grab active:cursor-grabbing"
             >
               <Image
@@ -55,7 +57,7 @@ export default function GallerySection() {
           {/* Duplicate set for seamless loop */}
           {photos.map((photo, i) => (
             <div
-              key={"p2-" + i}
+              key={\`p2-\${i}\`}
               className="relative overflow-hidden rounded-xl border-2 border-ink shadow-[4px_4px_0px_var(--ink)] bg-white w-[280px] sm:w-[380px] md:w-[440px] aspect-[4/3] shrink-0 mx-3 sm:mx-5 inline-block group/card transition-transform duration-300 hover:-translate-y-2 hover:shadow-[8px_8px_0px_var(--ink)] cursor-grab active:cursor-grabbing"
             >
               <Image
@@ -79,3 +81,26 @@ export default function GallerySection() {
     </section>
   );
 }
+`;
+
+fs.writeFileSync('components/GallerySection.tsx', c, 'utf8');
+
+// I also need to add the `animate-marquee` to Tailwind/globals.css
+let css = fs.readFileSync('app/globals.css', 'utf8');
+if (!css.includes('@keyframes marquee')) {
+  css += \`
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+}
+.hover\\\\:pause:hover {
+  animation-play-state: paused;
+}
+\`;
+  fs.writeFileSync('app/globals.css', css, 'utf8');
+}
+
+console.log('GallerySection rewritten for Marquee!');

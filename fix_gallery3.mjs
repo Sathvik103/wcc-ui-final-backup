@@ -1,4 +1,6 @@
-"use client";
+import fs from 'fs';
+
+const c = `"use client";
 
 import React from "react";
 import Image from "next/image";
@@ -79,3 +81,15 @@ export default function GallerySection() {
     </section>
   );
 }
+`;
+
+fs.writeFileSync('components/GallerySection.tsx', c, 'utf8');
+
+// I also need to add the animate-marquee to Tailwind/globals.css
+let css = fs.readFileSync('app/globals.css', 'utf8');
+if (!css.includes('@keyframes marquee')) {
+  css += '\n@keyframes marquee {\n  0% { transform: translateX(0%); }\n  100% { transform: translateX(-50%); }\n}\n.animate-marquee {\n  animation: marquee 40s linear infinite;\n}\n.hover\\:pause:hover {\n  animation-play-state: paused;\n}\n';
+  fs.writeFileSync('app/globals.css', css, 'utf8');
+}
+
+console.log('GallerySection rewritten for Marquee!');

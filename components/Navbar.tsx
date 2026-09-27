@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export function Navbar({ introComplete = true }: { introComplete?: boolean }) {
@@ -75,19 +76,8 @@ export function Navbar({ introComplete = true }: { introComplete?: boolean }) {
             aria-label="Toggle Navigation Menu"
             aria-expanded={mobileMenuOpen}
           >
-            <span
-              className={`h-0.5 w-4 bg-[#1a1918] rounded transition-all duration-200 origin-center ${mobileMenuOpen ? "rotate-45 translate-y-[6px]" : "mb-1"
-                }`}
-            />
-            <span
-              className={`h-0.5 w-4 bg-[#1a1918] rounded transition-opacity duration-200 ${mobileMenuOpen ? "opacity-0" : "mb-1"
-                }`}
-            />
-            <span
-              className={`h-0.5 w-4 bg-[#1a1918] rounded transition-all duration-200 origin-center ${mobileMenuOpen ? "-rotate-45 -translate-y-[6px]" : ""
-                }`}
-            />
-          </button>
+            {mobileMenuOpen ? <X size={20} strokeWidth={2.5} className="text-[#1a1918]" /> : <Menu size={20} strokeWidth={2.5} className="text-[#1a1918]" />}
+            </button>
         </div>
       </div>
 

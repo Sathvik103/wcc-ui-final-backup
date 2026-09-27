@@ -1,4 +1,6 @@
-"use client";
+import fs from 'fs';
+
+const code = `"use client";
 
 import React, { useState } from "react";
 import Image from "next/image";
@@ -22,7 +24,7 @@ const editionData: Record<string, {
     metrics: [
       { label: "EXPECTED CODERS", val: "6,000+" },
       { label: "INSTITUTIONS", val: "500+" },
-      { label: "PRIZE POOL", val: "₹55,000" },
+      { label: "PRIZE POOL", val: "₹50,000+" },
     ],
     links: []
   },
@@ -30,7 +32,7 @@ const editionData: Record<string, {
     pill: "WCC 5.0",
     title: "Winter Coding Contest 5.0",
     desc: "The 5th Edition became a national phenomenon, scaling massive concurrent participation across the country and raising the standard of competitive programming.",
-    poster: "/assets/WCC 5.0.png",
+    poster: "/assets/WCC 5.0 POSTER.png",
     metrics: [
       { label: "IMPRESSIONS", val: "80K" },
       { label: "REGISTRATIONS", val: "4.8K" },
@@ -131,8 +133,8 @@ export default function EditionsSection() {
           </button>
         </div>
 
-        {/* Dynamic Edition Card — override CSS reset with inline styles */}
-        <div className="reveal relative max-w-[1060px] mx-auto bg-white border-2 border-ink shadow-[8px_8px_0px_var(--ink)] rounded-2xl" style={{ display: 'block', padding: '40px' }}>
+        {/* Dynamic Edition Card */}
+        <div className="heritage-card reveal !p-8 sm:!p-10 relative max-w-[1000px] mx-auto border-2 border-ink shadow-[8px_8px_0px_var(--ink)] bg-white rounded-2xl h-auto">
           <AnimatePresence mode="wait">
             <motion.div 
               key={currentVer}
@@ -140,18 +142,17 @@ export default function EditionsSection() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.98, y: -10 }}
               transition={{ duration: 0.25, ease: "easeInOut" }}
-              style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) 380px', gap: '48px', alignItems: 'start' }}
-              className="edition-grid-inner"
+              className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 w-full items-start"
             >
               
               {/* LEFT COLUMN - TEXT & METRICS */}
-              <div className="flex flex-col justify-start min-h-full">
+              <div className="flex flex-col justify-start w-full">
                 <span className="text-[11px] font-bold tracking-widest text-coral uppercase mb-4 inline-block">{current.pill}</span>
                 <h3 className="text-3xl sm:text-[38px] font-display font-extrabold text-ink mb-5 leading-[1.1]">{current.title}</h3>
-                <p className="text-[16px] sm:text-[17px] font-medium text-dim leading-[1.7] mb-8 text-left sm:text-justify">{current.desc}</p>
+                <p className="text-[16px] sm:text-[17px] text-dim leading-[1.7] mb-8">{current.desc}</p>
 
                 {current.metrics && current.metrics.length > 0 && (
-                  <div className="grid grid-cols-2 gap-y-5 gap-x-8 mb-8">
+                  <div className="grid grid-cols-2 gap-y-6 gap-x-6 mb-8 w-full max-w-[400px]">
                     {current.metrics.map(m => (
                       <div key={m.label}>
                         <div className="text-[10px] sm:text-[11px] font-bold tracking-widest text-dim uppercase mb-1">{m.label}</div>
@@ -162,7 +163,7 @@ export default function EditionsSection() {
                 )}
 
                 {current.links.length > 0 && (
-                  <div className="mt-auto pt-6 border-t border-ink/10 flex flex-row gap-5 whitespace-nowrap items-center overflow-x-auto hide-scrollbar">
+                  <div className="mt-auto pt-6 border-t border-ink/10 flex flex-row gap-4 sm:gap-5 whitespace-nowrap items-center overflow-x-auto hide-scrollbar w-full">
                     {current.links.map(link => (
                       <a key={link.label} href={link.url} target="_blank" rel="noopener noreferrer" className="font-bold text-[13px] text-ink hover:text-coral transition-colors flex items-center gap-1.5 uppercase tracking-widest shrink-0">
                         {link.label} <span className="text-[14px]">↗</span>
@@ -173,14 +174,14 @@ export default function EditionsSection() {
               </div>
 
               {/* RIGHT COLUMN - POSTER */}
-              <div className="flex flex-col items-center sm:items-end justify-start w-full max-w-[380px] mx-auto sm:max-w-none sm:mx-0">
-                <div className="relative bg-[#fbfaf9] border-2 border-ink shadow-[4px_4px_0px_rgba(0,0,0,0.1)] w-full aspect-[4/5] overflow-hidden rounded-xl">
+              <div className="flex flex-col items-center justify-start w-full pt-0 md:pt-4">
+                <div className="relative bg-[#fbfaf9] border-2 border-ink shadow-[4px_4px_0px_rgba(0,0,0,0.1)] w-full max-w-[400px] aspect-[4/5] mx-auto overflow-hidden rounded-xl">
                   <Image
                     src={current.poster}
-                    alt={`${current.title} Poster`}
+                    alt={\`\${current.title} Poster\`}
                     fill
-                    sizes="380px"
-                    className="object-contain p-3"
+                    sizes="(max-width: 768px) 100vw, 400px"
+                    className="object-contain p-4"
                   />
                 </div>
               </div>
@@ -192,3 +193,7 @@ export default function EditionsSection() {
     </section>
   );
 }
+`;
+
+fs.writeFileSync('components/EditionsSection.tsx', code, 'utf8');
+console.log('EditionsSection structurally rewritten!');
