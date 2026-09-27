@@ -1,66 +1,8 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import Image from "next/image";
-
-function Countdown() {
-  const targetDate = new Date("2026-10-09T09:00:00+05:30").getTime();
-  const [timeLeft, setTimeLeft] = useState({
-    days: "00",
-    hours: "00",
-    minutes: "00",
-    seconds: "00",
-  });
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      const now = new Date().getTime();
-      const distance = targetDate - now;
-
-      if (distance < 0) {
-        clearInterval(timer);
-        return;
-      }
-
-      setTimeLeft({
-        days: String(Math.floor(distance / (1000 * 60 * 60 * 24))).padStart(2, "0"),
-        hours: String(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, "0"),
-        minutes: String(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, "0"),
-        seconds: String(Math.floor((distance % (1000 * 60)) / 1000)).padStart(2, "0"),
-      });
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, [targetDate]);
-
-  const units = [
-    { label: "DAYS", value: timeLeft.days },
-    { label: "HOURS", value: timeLeft.hours },
-    { label: "MINUTES", value: timeLeft.minutes },
-    { label: "SECONDS", value: timeLeft.seconds },
-  ];
-
-  return (
-    <div className="mt-24 max-w-xl">
-      <div className="flex items-end justify-between pb-2 mb-4">
-        <span className="font-mono text-xs font-bold text-coral tracking-[0.15em] uppercase">NEXT ROUND</span>
-        <div className="text-right">
-          <div className="font-display text-sm font-bold tracking-tight text-ink">09 OCT 2026</div>
-        </div>
-      </div>
-      
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        {units.map((u, i) => (
-          <div key={i} className="flex flex-col items-center justify-center border-2 border-ink bg-white py-4 shadow-[4px_4px_0px_rgba(26,25,24,0.1)]">
-            <span className="font-display text-4xl font-extrabold text-ink leading-none tracking-tight">{u.value}</span>
-            <span className="font-mono text-[10px] uppercase tracking-widest mt-2 text-dim font-bold">{u.label}</span>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
 
 function InteractivePoster() {
   const ref = useRef<HTMLDivElement>(null);
@@ -163,7 +105,7 @@ export default function HeroSection({ introComplete = true }: { introComplete?: 
     hidden: { opacity: 0, y: 30 },
     show: { 
       opacity: 1, 
-      y: 0,
+      y: 0, 
       transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as const }
     }
   };
@@ -224,13 +166,9 @@ export default function HeroSection({ introComplete = true }: { introComplete?: 
               >
                 REGISTER FOR FREE ↗
               </a>
-              <a className="btn btn-outline hero-how-link" href="#format">
+              <a className="font-bold text-sm text-dim hover:text-coral transition-colors border-b-2 border-ink pb-0.5 tracking-wide" href="#format">
                 See how it works
               </a>
-            </motion.div>
-
-            <motion.div variants={itemVariants} className="w-full">
-              <Countdown />
             </motion.div>
           </motion.div>
 

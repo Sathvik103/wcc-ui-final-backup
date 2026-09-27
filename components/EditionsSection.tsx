@@ -41,7 +41,7 @@ const editionData: Record<EditionKey, EditionInfo> = {
     m2Val: "75,000+",
     m3Label: "PRIZE POOL",
     m3Val: "₹40,000+",
-    poster: "/assets/WCC 5.0.png",
+    poster: "/assets/WCC 5.0(2).png",
   },
   "4.0": {
     pill: "HYBRID MILESTONE • 2024",
@@ -89,7 +89,7 @@ const editionData: Record<EditionKey, EditionInfo> = {
     m2Val: "100%",
     m3Label: "PRIZE POOL",
     m3Val: "₹7,500+",
-    poster: "/assets/wc1.jpg",
+    poster: "/assets/wc1_fitted.jpg",
   },
 };
 
@@ -98,36 +98,42 @@ export default function EditionsSection() {
   const current = editionData[selectedVer];
 
   return (
-    <section id="heritage" className="section">
-      <div className="wrap">
-        <div className="section-head reveal mx-auto flex flex-col items-center justify-center text-center px-4 w-full">
-          <span className="section-badge">HERITAGE OF EXCELLENCE</span>
-          <h2 className="text-center w-full break-words sm:break-normal">Evolution Across 6 Flagship Editions</h2>
-          <p className="text-center max-w-[500px] mx-auto mt-4 w-full">
+    <section id="heritage" className="section !py-12 sm:!py-16">
+      <div className="wrap !px-4 sm:!px-7">
+        <div className="section-head reveal mx-auto flex flex-col items-center justify-center text-center px-4 w-full mb-8 sm:mb-14">
+          <span className="section-badge text-xs sm:text-[13px]">HERITAGE OF EXCELLENCE</span>
+          <h2 className="text-2xl sm:text-4xl md:text-[42px] leading-tight text-center w-full break-words sm:break-normal">
+            Evolution Across 6 Flagship Editions
+          </h2>
+          <p className="text-sm sm:text-base px-2 text-center max-w-[500px] mx-auto mt-4 w-full">
             Click across editions to trace how a departmental initiative scaled into a recognized national competitive standard.
           </p>
         </div>
 
         {/* Edition Tabs */}
-        <div className="heritage-tabs reveal">
-          <div className="heritage-tabs-row">
+        <div className="heritage-tabs reveal !my-6 sm:!my-10">
+          <div className="heritage-tabs-row flex-wrap justify-center gap-2 sm:gap-2.5">
             {(["6.0", "5.0", "4.0"] as EditionKey[]).map((ver) => (
               <button
                 key={ver}
                 type="button"
-                className={`heritage-tab ${selectedVer === ver ? "active" : ""}`}
+                className={`heritage-tab text-xs sm:text-sm py-2 px-3.5 sm:py-2.5 sm:px-5 ${
+                  selectedVer === ver ? "active" : ""
+                }`}
                 onClick={() => setSelectedVer(ver)}
               >
                 WCC {ver} ({ver === "6.0" ? "2026" : ver === "5.0" ? "2025" : "2024"})
               </button>
             ))}
           </div>
-          <div className="heritage-tabs-row">
+          <div className="heritage-tabs-row flex-wrap justify-center gap-2 sm:gap-2.5 mt-2">
             {(["3.0", "2.0", "1.0"] as EditionKey[]).map((ver) => (
               <button
                 key={ver}
                 type="button"
-                className={`heritage-tab ${selectedVer === ver ? "active" : ""}`}
+                className={`heritage-tab text-xs sm:text-sm py-2 px-3.5 sm:py-2.5 sm:px-5 ${
+                  selectedVer === ver ? "active" : ""
+                }`}
                 onClick={() => setSelectedVer(ver)}
               >
                 WCC {ver} ({ver === "3.0" ? "2023" : ver === "2.0" ? "2022" : "2021"})
@@ -137,38 +143,44 @@ export default function EditionsSection() {
         </div>
 
         {/* Dynamic Edition Card */}
-        <div className="heritage-card reveal">
+        <div className="heritage-card reveal !p-6 sm:!p-10">
           <div className="heritage-left">
-            <span className="heritage-pill">{current.pill}</span>
-            <h3>{current.title}</h3>
-            <p>{current.desc}</p>
+            <span className="heritage-pill text-[10px] sm:text-[10.5px]">{current.pill}</span>
+            <h3 className="text-2xl sm:text-3xl md:text-[34px]">{current.title}</h3>
+            <p className="text-sm sm:text-[15px]">{current.desc}</p>
 
-            <div className="heritage-metrics">
+            <div className="heritage-metrics grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div>
                 <div className="heritage-metric-label">{current.m1Label}</div>
-                <div className="heritage-metric-val">{current.m1Val}</div>
+                <div className="heritage-metric-val text-xl sm:text-2xl md:text-[26px]">
+                  {current.m1Val}
+                </div>
               </div>
               <div>
                 <div className="heritage-metric-label">{current.m2Label}</div>
-                <div className="heritage-metric-val">{current.m2Val}</div>
+                <div className="heritage-metric-val text-xl sm:text-2xl md:text-[26px]">
+                  {current.m2Val}
+                </div>
               </div>
               <div>
                 <div className="heritage-metric-label">{current.m3Label}</div>
-                <div className="heritage-metric-val">{current.m3Val}</div>
+                <div className="heritage-metric-val text-xl sm:text-2xl md:text-[26px]">
+                  {current.m3Val}
+                </div>
               </div>
             </div>
           </div>
 
-          <div className="heritage-right">
+          <div className="heritage-right w-full mt-6 sm:mt-0">
             <div className="heritage-right-title">OFFICIAL EDITION POSTER</div>
-            <div className="heritage-poster-frame relative bg-[#f7f6f3] flex items-center justify-center p-2 border-2 border-ink border-opacity-10">
+            <div className="heritage-poster-frame relative bg-[#1a1918] flex items-center justify-center border-2 border-ink shadow-[4px_4px_0px_var(--ink)] max-w-[280px] aspect-[4/5] mx-auto overflow-hidden rounded-xl">
               <Image
                 key={current.poster}
                 src={current.poster}
                 alt={`${current.title} Poster`}
                 fill
                 sizes="(max-width: 768px) 100vw, 300px"
-                className="object-contain transition-opacity duration-300 p-3"
+                className="object-contain transition-opacity duration-300"
               />
             </div>
           </div>
