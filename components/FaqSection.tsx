@@ -5,19 +5,19 @@ import React, { useState } from "react";
 const faqs = [
   {
     q: "Is Round 1 really 100% free?",
-    a: "Yes. Registration and participation in Round 1 is completely free for all student participants across India — no hidden charges.",
+    a: "Round 1 registration and participation are completely free for students across India, with no hidden charges.",
   },
   {
     q: "What's the permissible team size?",
-    a: "Solo or duo. Both members must be enrolled in an accredited degree program (B.Tech, BE, BCA, MCA, M.Tech, etc.).",
+    a: "Participate individually or as a two-member team. Open to students currently pursuing a B.Tech degree.",
   },
   {
-    q: "Which languages are supported on HackerEarth?",
-    a: "C++ (GCC 17/20), Java (17/21), Python 3.x and C. Standard template/data-structure libraries are fully permitted.",
+    q: "Which programming languages are supported for the contest?",
+    a: "Supported languages: C++, Java, Python 3.x, and C. Standard libraries and data structures are allowed.",
   },
   {
     q: "Where is Round 2 held?",
-    a: "Thursday, 22 Oct 2026 at VNRVJIET's CS & IT Labs, Bachupally, Hyderabad. Transit details go to the 150+ shortlisted qualifiers.",
+    a: "Thursday, 22 October 2026 at VNRVJIET campus, Bachupally, Hyderabad. Reporting and transit details will be shared with participants.",
   },
 ];
 

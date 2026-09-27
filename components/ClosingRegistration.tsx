@@ -72,7 +72,7 @@ export default function ClosingRegistration() {
         <h2 className="text-3xl sm:text-5xl md:text-[56px] font-display font-extrabold leading-[1.1] tracking-tight uppercase max-w-4xl mx-auto mb-6">
           READY TO COMPETE AT THE NATIONAL LEVEL?
         </h2>
-        <p className="text-[16px] sm:text-[18px] font-medium opacity-90 mb-12 sm:mb-16">
+        <p className="text-[16px] sm:text-[18px] font-medium opacity-90 !mb-5 sm:mb-16">
           6,000+ coders. A virtual qualifier. A campus finale in Hyderabad.
         </p>
 

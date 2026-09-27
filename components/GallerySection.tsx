@@ -4,12 +4,12 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 
 const photos = [
-  { img: "/assets/gall1.jpg", alt: "Inauguration of WCC", caption: "Inauguration Ceremony" },
-  { img: "/assets/gall6.jpg", alt: "WCC Participants Focus", caption: "Testing Their Expertise" },
-  { img: "/assets/pic4.jpg", alt: "WCC Event Stage", caption: "Round 2 Arena" },
-  { img: "/assets/pic6.jpg", alt: "WCC Audience Atmosphere", caption: "Top College Coders" },
-  { img: "/assets/gall10.jpg", alt: "WCC Teams Collaborating", caption: "Brainstorming Solutions" },
-  { img: "/assets/pic8.jpg", alt: "WCC Organizers and Leaders", caption: "Awarding Ceremony" },
+  { img: "/assets/gall1.jpg", alt: "Inauguration of WCC", caption: "Awarding Ceremony" },
+  { img: "/assets/gall6.jpg", alt: "WCC Participants Focus", caption: "Feedback from Participants" },
+  { img: "/assets/gall11.jpg", alt: "WCC Event Stage", caption: "Testing their Expertise" },
+  { img: "/assets/pic6.jpg", alt: "WCC Audience Atmosphere", caption: "Registration Desk" },
+  { img: "/assets/gall10.jpg", alt: "WCC Teams Collaborating", caption: "Certificate Presentation" },
+  { img: "/assets/pic8.jpg", alt: "WCC Organizers and Leaders", caption: "Inauguration Ceremony" },
 ];
 
 export default function GallerySection() {
@@ -38,7 +38,7 @@ export default function GallerySection() {
       </div>
 
       <div className="w-full relative py-8 group">
-        <div className="flex w-[max-content] animate-marquee whitespace-nowrap hover:pause">
+        <div className="flex w-max items-center gap-8 sm:gap-10 md:gap-14 animate-marquee whitespace-nowrap hover:pause">
           {/* First set */}
           {photos.map((photo, i) => (
             <div
@@ -53,14 +53,15 @@ export default function GallerySection() {
                 }
               }}
               aria-label={`View ${photo.caption}`}
-              className="relative overflow-hidden rounded-xl border-2 border-ink shadow-[4px_4px_0px_var(--ink)] bg-white w-[280px] sm:w-[360px] md:w-[420px] aspect-[4/3] shrink-0 mr-8 sm:mr-10 md:mr-12 inline-block group/card transition-transform duration-300 hover:-translate-y-2 hover:shadow-[8px_8px_0px_var(--ink)] cursor-pointer"
+              className="relative overflow-hidden rounded-xl border-2 border-ink shadow-[4px_4px_0px_var(--ink)] bg-[#f5f3ee] h-[220px] sm:h-[280px] md:h-[320px] w-auto shrink-0 group/card transition-transform duration-300 hover:-translate-y-2 hover:shadow-[8px_8px_0px_var(--ink)] cursor-pointer"
             >
               <Image
                 src={photo.img}
-                alt={photo.alt}
-                fill
-                sizes="(max-width: 768px) 280px, 420px"
-                className="object-cover transition-transform duration-700 group-hover/card:scale-105"
+  alt={photo.alt}
+  width={1200}
+  height={900}
+  sizes="auto"
+  className="h-full w-auto max-w-none object-contain transition-transform duration-700 group-hover/card:scale-[1.02]"
                 priority={i < 3}
                 loading={i < 3 ? "eager" : "lazy"}
               />
@@ -95,16 +96,17 @@ export default function GallerySection() {
                 }
               }}
               aria-label={`View ${photo.caption}`}
-              className="relative overflow-hidden rounded-xl border-2 border-ink shadow-[4px_4px_0px_var(--ink)] bg-white w-[280px] sm:w-[360px] md:w-[420px] aspect-[4/3] shrink-0 mr-8 sm:mr-10 md:mr-12 inline-block group/card transition-transform duration-300 hover:-translate-y-2 hover:shadow-[8px_8px_0px_var(--ink)] cursor-pointer"
+              className="relative overflow-hidden rounded-xl border-2 border-ink shadow-[4px_4px_0px_var(--ink)] bg-[#f5f3ee] h-[220px] sm:h-[280px] md:h-[320px] w-auto shrink-0 group/card transition-transform duration-300 hover:-translate-y-2 hover:shadow-[8px_8px_0px_var(--ink)] cursor-pointer"
             >
               <Image
-                src={photo.img}
-                alt={photo.alt}
-                fill
-                sizes="(max-width: 768px) 280px, 420px"
-                className="object-cover transition-transform duration-700 group-hover/card:scale-105"
-                loading="lazy"
-              />
+  src={photo.img}
+  alt={photo.alt}
+  width={1200}
+  height={900}
+  sizes="auto"
+  className="h-full w-auto max-w-none object-contain transition-transform duration-700 group-hover/card:scale-[1.02]"
+  loading="lazy"
+/>
 
               <div className="absolute bottom-5 sm:bottom-6 left-0 w-full flex justify-center px-4 opacity-0 group-hover/card:opacity-100 group-focus-visible/card:opacity-100 transition-all duration-300 pointer-events-none">
                 <div

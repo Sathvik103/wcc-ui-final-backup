@@ -186,7 +186,7 @@ export default function HeroSection({
               className="hero-actions flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center w-full"
             >
               <a
-                className="btn btn-solid !px-10 !py-5 bg-ink text-bg font-bold font-display text-[18px] border-[3px] border-ink shadow-[5px_5px_0px_var(--coral)] hover:shadow-[7px_7px_0px_var(--coral)] hover:-translate-y-1 transition-all uppercase tracking-[0.1em] text-center flex items-center justify-center gap-2"
+                className="btn btn-solid !px-5 !py-3 bg-ink text-bg font-bold font-display text-[18px] border-[3px] border-ink shadow-[5px_5px_0px_var(--coral)] hover:shadow-[7px_7px_0px_var(--coral)] hover:-translate-y-1 transition-all uppercase tracking-[0.1em] text-center flex items-center justify-center gap-2"
                 href="https://unstop.com"
                 target="_blank"
                 rel="noopener noreferrer"

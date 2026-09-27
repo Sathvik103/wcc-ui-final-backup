@@ -91,8 +91,8 @@ export function Navbar({ introComplete = true }: { introComplete?: boolean }) {
             transition={{ duration: 0.2, ease: "easeInOut" }}
             className="lg:hidden bg-white border-t-2 border-[#1a1918] mt-2.5 shadow-xl overflow-hidden"
           >
-            <div className="wrap !px-6 sm:!px-8 pt-5 pb-6 flex flex-col items-start w-full">
-              <div className="flex flex-col gap-2.5 w-full">
+            <div className="wrap !px-6 sm:!px-8 py-10 pb-6 flex flex-col items-start w-full">
+              <div className="flex flex-col gap-5 !py-5 w-full">
                 <a
                   href="#scale"
                   onClick={() => setMobileMenuOpen(false)}
@@ -144,7 +144,7 @@ export function Navbar({ introComplete = true }: { introComplete?: boolean }) {
                 </a>
               </div>
 
-              <div className="pt-4 mt-3 border-t border-slate-200 w-full pb-2">
+              <div className="pt-4 mt-3 border-t border-slate-200 w-full !pb-2">
                 <a
                   className="btn btn-solid w-full text-center py-3 text-xs sm:text-sm font-bold font-display uppercase tracking-wider block shadow-[3px_3px_0px_#1a1918]"
                   href="https://unstop.com"

@@ -76,7 +76,7 @@ export default function StagesSection() {
         <div className="section-head reveal">
           <span className="section-badge">CONTEST ARCHITECTURE</span>
           <h2>How WCC 6.0 works.</h2>
-          <p>A four-stage pipeline testing algorithmic reasoning end to end.</p>
+          <p>The sixth flagship edition. Expanding further with official HackerEarth proctored arena infrastructure and nationwide outreach on Unstop.</p>
         </div>
 
         <div className="curved-map-container" id="contestMap" ref={mapSectionRef}>
@@ -147,7 +147,7 @@ export default function StagesSection() {
                     <span className="dot"></span>01 · NATIONAL REGISTRATION
                   </div>
                   <h3>National Registration</h3>
-                  <p>Register solo or in duos on Unstop. Registration Fee: ₹300 per team.</p>
+                  <p>Register individually or with one teammate on Unstop. Round 1 is completely free for students across India.</p>
                   <div className="curved-date">DEADLINE — 11 OCT 2026 (EXT. 12 OCT)</div>
                   <div>
                     <a className="map-link-btn" href="https://unstop.com" target="_blank" rel="noopener noreferrer">
@@ -168,13 +168,8 @@ export default function StagesSection() {
                     <span className="dot"></span>02 · VIRTUAL ARENA
                   </div>
                   <h3>Round 1 — Virtual Arena</h3>
-                  <p>Proctored on HackerEarth, 9:00 AM–4:40 PM. Data Structures, DP, Math and Graph problems.</p>
+                  <p>Compete online on HackerEarth with challenges covering Data Structures, Dynamic Programming, Mathematics, and Graphs.</p>
                   <div className="curved-date">MODE · FULLY ONLINE · 13 OCT 2026</div>
-                  <div>
-                    <a className="map-link-btn" href="https://HackerEarth.com" target="_blank" rel="noopener noreferrer">
-                      HackerEarth PORTAL →
-                    </a>
-                  </div>
                 </div>
                 <div className="card-mask"></div>
               </div>
@@ -189,7 +184,7 @@ export default function StagesSection() {
                     <span className="dot"></span>03 · AUDIT &amp; SHORTLISTING
                   </div>
                   <h3>Audit &amp; Shortlisting</h3>
-                  <p>Automated plagiarism and similarity audits. Top 70 teams shortlisted for the campus finale.</p>
+                  <p>Automated plagiarism and similarity audits. Top <strong>70</strong> teams shortlisted for the campus finale.</p>
                   <div className="curved-date">MERIT RANKLIST PUBLISHED AFTER ROUND 1</div>
                 </div>
                 <div className="card-mask"></div>
@@ -205,7 +200,7 @@ export default function StagesSection() {
                     <span className="dot"></span>04 · CAMPUS FINALE
                   </div>
                   <h3>Round 2 — Campus Finale</h3>
-                  <p>In-person battle at VNRVJIET&apos;s HPC labs, followed by the valedictory awards ceremony.</p>
+                  <p>Compete in person at VNRVJIET campus, followed by the grand valedictory and awards ceremony.</p>
                   <div className="curved-date">LOCATION · VNRVJIET, HYDERABAD · 22 OCT 2026</div>
                   <div>
                     <a

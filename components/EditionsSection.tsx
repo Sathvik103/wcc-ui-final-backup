@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const editionsOrder = ["6.0", "5.0", "4.0", "3.0", "2.0", "1.0"];
 
@@ -180,13 +181,13 @@ export default function EditionsSection() {
         </div>
 
         {/* EDITION SWITCHER */}
-        <div className="flex justify-center items-center gap-4 sm:gap-6 !mt-16 sm:!mt-20 lg:!mt-28 !mb-12 sm:!mb-14 lg:!mb-16 reveal">
+        <div className="flex justify-center items-center gap-4 sm:gap-6 !mt-6 sm:!mt-3 lg:!mt-3 !mb-6 sm:!mb-10 lg:!mb-8 reveal">
           <button
             onClick={goPrev}
             className="w-10 h-10 sm:w-11 sm:h-11 border-2 border-ink rounded-lg bg-white shadow-[2px_2px_0px_var(--ink)] hover:bg-[#f5f3ee] hover:text-coral active:translate-x-[1px] active:translate-y-[1px] transition-all flex items-center justify-center font-bold text-lg sm:text-xl text-ink cursor-pointer shrink-0"
             aria-label="Previous edition"
           >
-            ←
+            <ChevronLeft />
           </button>
 
           <div className="font-display font-extrabold text-2xl sm:text-3xl text-ink w-[140px] sm:w-[170px] text-center tracking-tight select-none">
@@ -198,8 +199,9 @@ export default function EditionsSection() {
             className="w-10 h-10 sm:w-11 sm:h-11 border-2 border-ink rounded-lg bg-white shadow-[2px_2px_0px_var(--ink)] hover:bg-[#f5f3ee] hover:text-coral active:translate-x-[1px] active:translate-y-[1px] transition-all flex items-center justify-center font-bold text-lg sm:text-xl text-ink cursor-pointer shrink-0"
             aria-label="Next edition"
           >
-            →
+            <ChevronRight />
           </button>
+          
         </div>
 
         {/* DYNAMIC EDITION CARD */}
@@ -259,7 +261,7 @@ export default function EditionsSection() {
                 {current.links.length > 0 && (
                   <div className="pt-5 lg:pt-7 border-t border-ink/10 flex flex-row justify-between gap-4 sm:gap-5 whitespace-nowrap items-center overflow-x-auto hide-scrollbar w-full">
                     {current.links.map((link) => (
-                      <a
+                      <p className="hover:text-coral text-ink"><a
                         key={link.label}
                         href={link.url}
                         target="_blank"
@@ -271,6 +273,7 @@ export default function EditionsSection() {
                           ↗
                         </span>
                       </a>
+                      </p>
                     ))}
                   </div>
                 )}
