@@ -6,7 +6,7 @@ export default function ContactsSection() {
   return (
     <section
       id="contacts"
-      className="section !py-20 sm:!py-28 bg-[#fdfdfc] border-t-2 border-ink/10"
+      className="section !py-20 sm:!py-28 bg-coral border-y-[3px] border-ink text-white"
     >
       <div className="wrap !px-4 sm:!px-8">
 
@@ -16,11 +16,11 @@ export default function ContactsSection() {
             CONTACTS
           </span>
 
-          <h2 className="text-3xl sm:text-4xl md:text-[48px] leading-[1.1] font-display font-extrabold text-ink mt-4">
+          <h2 className="text-3xl sm:text-4xl md:text-[48px] leading-[1.1] font-display font-extrabold text-white mt-4">
             Get in Touch
           </h2>
 
-          <p className="text-[15px] sm:text-[17px] text-dim text-center max-w-[560px] mx-auto w-full mt-3 leading-relaxed">
+          <p className="contacts-intro text-[15px] sm:text-[17px] text-white text-center max-w-[560px] mx-auto w-full mt-3 leading-relaxed">
             Have questions regarding contest rounds, registrations, or college
             participation? Reach out to our organizing team.
           </p>

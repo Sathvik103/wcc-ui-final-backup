@@ -71,12 +71,12 @@ export default function StagesSection() {
   }, []);
 
   return (
-    <section id="format" className="section">
+    <section id="format" className="section bg-coral border-y-[3px] border-ink">
       <div className="wrap">
-        <div className="section-head reveal">
-          <span className="section-badge">CONTEST ARCHITECTURE</span>
-          <h2>How WCC 6.0 works.</h2>
-          <p>The sixth flagship edition. Expanding further with official HackerEarth proctored arena infrastructure and nationwide outreach on Unstop.</p>
+        <div className="section-head reveal ">
+          <span className="section-badge text-white">CONTEST ARCHITECTURE</span>
+          <h2 className="text-white" >How WCC 6.0 works.</h2>
+          <p className="text-white" >The sixth flagship edition. Expanding further with official HackerEarth proctored arena infrastructure and nationwide outreach on Unstop.</p>
         </div>
 
         <div className="curved-map-container" id="contestMap" ref={mapSectionRef}>
@@ -95,8 +95,8 @@ export default function StagesSection() {
                  C 220 215, 740 215, 740 340
                  C 740 465, 220 465, 220 590
                  C 220 715, 740 715, 740 840"
-              stroke="rgba(26,25,24,0.14)"
-              strokeWidth="2"
+              stroke="rgba(255,255,255,0.9)"
+              strokeWidth="4"
               strokeLinecap="round"
               strokeDasharray="7 5"
               fill="none"
@@ -110,8 +110,8 @@ export default function StagesSection() {
                  C 220 215, 740 215, 740 340
                  C 740 465, 220 465, 220 590
                  C 220 715, 740 715, 740 840"
-              stroke="var(--coral)"
-              strokeWidth="3.5"
+              stroke="var(--ink)"
+              strokeWidth="5"
               strokeLinecap="round"
               fill="none"
               style={{ strokeDasharray: 2500, strokeDashoffset: 2500 }}
@@ -125,16 +125,16 @@ export default function StagesSection() {
               cy="90"
               r="6"
               fill="#fff"
-              stroke="var(--coral)"
-              strokeWidth="2.5"
+              stroke="var(--ink)"
+              strokeWidth="3"
               opacity="0"
             />
 
             {/* Static anchor circles */}
-            <circle cx="220" cy="90" r="5" fill="var(--coral)" opacity="0.3" />
-            <circle cx="740" cy="340" r="5" fill="var(--coral)" opacity="0.3" />
-            <circle cx="220" cy="590" r="5" fill="var(--coral)" opacity="0.3" />
-            <circle cx="740" cy="840" r="5" fill="var(--coral)" opacity="0.3" />
+            <circle cx="220" cy="90" r="5" fill="#ffffff" opacity="0.95" />
+            <circle cx="740" cy="340" r="5" fill="#ffffff" opacity="0.95" />
+            <circle cx="220" cy="590" r="5" fill="#ffffff" opacity="0.95" />
+            <circle cx="740" cy="840" r="5" fill="#ffffff" opacity="0.95" />
           </svg>
 
           <div className="curved-node-grid">

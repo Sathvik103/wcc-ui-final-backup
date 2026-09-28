@@ -74,36 +74,43 @@ export default function ScaleSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-6 reveal">
-          <div className="flex flex-col">
-            <AnimatedNumber value={6000} suffix="+" />
-            <div className="font-mono text-[11px] font-bold text-coral tracking-widest uppercase mt-4 mb-2">EXPECTED CODERS</div>
-            <div className="text-[14px] text-dim font-medium">Pan-India talent pipeline</div>
+        <div className="">
+          <div className="flex justify-around items-center mb-10">
+
+            <div className="flex flex-col lg:col-span-2">
+              <AnimatedNumber value={6000} suffix="+" />
+              <div className="font-mono text-[11px] font-bold text-coral tracking-widest uppercase mt-4 mb-2">EXPECTED CODERS</div>
+              <div className="text-[14px] text-dim font-medium">Pan-India talent pipeline</div>
+            </div>
+
+            <div className="flex flex-col lg:col-span-2">
+              <AnimatedNumber value={90000} suffix="+" />
+              <div className="font-mono text-[11px] font-bold text-coral tracking-widest uppercase mt-4 mb-2">IMPRESSIONS</div>
+              <div className="text-[14px] text-dim font-medium">High-density collegiate reach</div>
+            </div>
+
+            <div className="flex flex-col lg:col-span-2">
+              <AnimatedNumber value={500} suffix="+" />
+              <div className="font-mono text-[11px] font-bold text-coral tracking-widest uppercase mt-4 mb-2">INSTITUTIONS</div>
+              <div className="text-[14px] text-dim font-medium">IITs, NITs, BITS & Universities</div>
+            </div>
+
           </div>
 
-          <div className="flex flex-col">
-            <AnimatedNumber value={90000} suffix="+" />
-            <div className="font-mono text-[11px] font-bold text-coral tracking-widest uppercase mt-4 mb-2">IMPRESSIONS</div>
-            <div className="text-[14px] text-dim font-medium">High-density collegiate reach</div>
+          <div className="flex justify-center items-center gap-4 lg:gap-24">
+            <div className="flex flex-col lg:col-span-2 lg:col-start-2">
+              <AnimatedNumber value={150} suffix="+" />
+              <div className="font-mono text-[11px] font-bold text-coral tracking-widest uppercase mt-4 mb-2">CAMPUS FINALISTS</div>
+              <div className="text-[14px] text-dim font-medium">Curated algorithmic minds</div>
+            </div>
+
+            <div className="col-span-2 flex flex-col lg:col-span-2 lg:col-start-4">
+              <AnimatedNumber value={55000} prefix="₹"  />
+              <div className="font-mono text-[11px] font-bold text-coral tracking-widest uppercase mt-4 mb-2">DIRECT HONORS</div>
+              <div className="text-[14px] text-dim font-medium">Verified cash & trophies</div>
+            </div>
           </div>
 
-          <div className="flex flex-col">
-            <AnimatedNumber value={500} suffix="+" />
-            <div className="font-mono text-[11px] font-bold text-coral tracking-widest uppercase mt-4 mb-2">INSTITUTIONS</div>
-            <div className="text-[14px] text-dim font-medium">IITs, NITs, BITS & Universities</div>
-          </div>
-
-          <div className="flex flex-col">
-            <AnimatedNumber value={150} suffix="+" />
-            <div className="font-mono text-[11px] font-bold text-coral tracking-widest uppercase mt-4 mb-2">CAMPUS FINALISTS</div>
-            <div className="text-[14px] text-dim font-medium">Curated algorithmic minds</div>
-          </div>
-
-          <div className="flex flex-col col-span-2 lg:col-span-1">
-            <AnimatedNumber value={50000} prefix="₹" suffix="+" />
-            <div className="font-mono text-[11px] font-bold text-coral tracking-widest uppercase mt-4 mb-2">DIRECT HONORS</div>
-            <div className="text-[14px] text-dim font-medium">Verified cash & trophies</div>
-          </div>
         </div>
       </div>
     </section>

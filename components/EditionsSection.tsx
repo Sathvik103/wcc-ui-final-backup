@@ -22,7 +22,7 @@ const editionData: Record<
     pill: "The Next Evolution",
     title: "Winter Coding Contest 6.0",
     desc: "The sixth flagship edition. Expanding further with official proctored arena infrastructure and nationwide outreach.",
-    poster: "/assets/images/poster_6_0.png",
+    poster: "/assets/images/WCC%20instaPost%202026.png",
     metrics: [
       { label: "EXPECTED CODERS", val: "6,000+" },
       { label: "INSTITUTIONS", val: "500+" },

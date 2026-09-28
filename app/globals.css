@@ -339,7 +339,7 @@ a {
 }
 .tick span {
   font-family: var(--font-mono), 'JetBrains Mono', monospace;
-  font-size: 11px;
+  font-size: 13px;
   color: var(--ink);
   letter-spacing: .06em;
   font-weight: 700;
@@ -348,6 +348,12 @@ a {
 /* ---- SECTION shell ---- */
 .section { padding: 100px 0;
   position: relative;
+}
+@media (min-width: 1024px) {
+  #scale .scale-metrics {
+    width: calc(100% - 16px);
+    margin-left: 16px;
+  }
 }
 .section-head {
   max-width: 640px;
@@ -374,6 +380,12 @@ a {
   max-width: 480px;
   margin-left: auto;
   margin-right: auto;
+}
+#contacts .section-head .contacts-intro {
+  color: rgba(255, 255, 255, 0.92);
+}
+#format .section-head p {
+  color: #ffffff;
 }
 .reveal {
   opacity: 0;
@@ -520,7 +532,7 @@ a {
   pointer-events: none;
 }
 .map-node-card .curved-card {
-  opacity: 0.72;
+  opacity: 1;
   transform: translateY(0);
   transition: opacity 0.5s cubic-bezier(0.16,1,0.3,1), border-color 0.3s ease, box-shadow 0.3s ease;
 }

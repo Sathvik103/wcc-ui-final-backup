@@ -48,13 +48,12 @@ export function Navbar({ introComplete = true }: { introComplete?: boolean }) {
 
         {/* Desktop Navlinks */}
         <div className="navlinks hidden lg:flex items-center gap-6 text-sm font-bold text-[#1a1918]">
-          <a href="#scale">Overview</a>
           <a href="#heritage">Evolution</a>
-          <a href="#format">How It Works</a>
           <a href="#archive">Archive</a>
+          <a href="#format">How It Works</a>
           <a href="#prizes">Prizes</a>
-          <a href="#sponsors">Sponsors</a>
           <a href="#faq">FAQ</a>
+          <a href="#sponsors">Sponsors</a>
         </div>
 
         {/* Actions (Register CTA + Mobile Toggle) */}
@@ -94,25 +93,11 @@ export function Navbar({ introComplete = true }: { introComplete?: boolean }) {
             <div className="wrap !px-6 sm:!px-8 py-10 pb-6 flex flex-col items-start w-full">
               <div className="flex flex-col gap-5 !py-5 w-full">
                 <a
-                  href="#scale"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="font-display font-bold text-[15px] text-[#1a1918] hover:text-[#ff5f40] hover:bg-[#f5f3ee] rounded-lg px-4 py-2.5 transition-colors block text-left w-full"
-                >
-                  Overview
-                </a>
-                <a
                   href="#heritage"
                   onClick={() => setMobileMenuOpen(false)}
                   className="font-display font-bold text-[15px] text-[#1a1918] hover:text-[#ff5f40] hover:bg-[#f5f3ee] rounded-lg px-4 py-2.5 transition-colors block text-left w-full"
                 >
                   Evolution
-                </a>
-                <a
-                  href="#format"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="font-display font-bold text-[15px] text-[#1a1918] hover:text-[#ff5f40] hover:bg-[#f5f3ee] rounded-lg px-4 py-2.5 transition-colors block text-left w-full"
-                >
-                  How It Works
                 </a>
                 <a
                   href="#archive"
@@ -122,6 +107,13 @@ export function Navbar({ introComplete = true }: { introComplete?: boolean }) {
                   Archive
                 </a>
                 <a
+                  href="#format"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="font-display font-bold text-[15px] text-[#1a1918] hover:text-[#ff5f40] hover:bg-[#f5f3ee] rounded-lg px-4 py-2.5 transition-colors block text-left w-full"
+                >
+                  How It Works
+                </a>
+                <a
                   href="#prizes"
                   onClick={() => setMobileMenuOpen(false)}
                   className="font-display font-bold text-[15px] text-[#1a1918] hover:text-[#ff5f40] hover:bg-[#f5f3ee] rounded-lg px-4 py-2.5 transition-colors block text-left w-full"
@@ -129,18 +121,18 @@ export function Navbar({ introComplete = true }: { introComplete?: boolean }) {
                   Prizes
                 </a>
                 <a
-                  href="#sponsors"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="font-display font-bold text-[15px] text-[#1a1918] hover:text-[#ff5f40] hover:bg-[#f5f3ee] rounded-lg px-4 py-2.5 transition-colors block text-left w-full"
-                >
-                  Sponsors
-                </a>
-                <a
                   href="#faq"
                   onClick={() => setMobileMenuOpen(false)}
                   className="font-display font-bold text-[15px] text-[#1a1918] hover:text-[#ff5f40] hover:bg-[#f5f3ee] rounded-lg px-4 py-2.5 transition-colors block text-left w-full"
                 >
                   FAQ
+                </a>
+                <a
+                  href="#sponsors"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="font-display font-bold text-[15px] text-[#1a1918] hover:text-[#ff5f40] hover:bg-[#f5f3ee] rounded-lg px-4 py-2.5 transition-colors block text-left w-full"
+                >
+                  Sponsors
                 </a>
               </div>
 
