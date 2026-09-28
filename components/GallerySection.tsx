@@ -1,0 +1,184 @@
+"use client";
+
+import React, { useState, useEffect } from "react";
+import Image from "next/image";
+
+const photos = [
+  { img: "/assets/gall1.jpg", alt: "Inauguration of WCC", caption: "Awarding Ceremony" },
+  { img: "/assets/gall6.jpg", alt: "WCC Participants Focus", caption: "Feedback from Participants" },
+  { img: "/assets/gall11.jpg", alt: "WCC Event Stage", caption: "Testing their Expertise" },
+  { img: "/assets/pic6.jpg", alt: "WCC Audience Atmosphere", caption: "Registration Desk" },
+  { img: "/assets/gall10.jpg", alt: "WCC Teams Collaborating", caption: "Certificate Presentation" },
+  { img: "/assets/pic8.jpg", alt: "WCC Organizers and Leaders", caption: "Inauguration Ceremony" },
+];
+
+export default function GallerySection() {
+  const [selectedPhoto, setSelectedPhoto] = useState<(typeof photos)[0] | null>(null);
+
+  useEffect(() => {
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setSelectedPhoto(null);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, []);
+
+  return (
+    <section id="archive" className="section !py-20 sm:!py-28 bg-[#fdfdfc] overflow-hidden">
+      <div className="wrap section-head reveal mx-auto flex flex-col items-center justify-center text-center px-4 w-full mb-16">
+        <span className="section-badge text-[11px] sm:text-[13px] uppercase tracking-widest font-bold">ARCHIVES</span>
+        <h2 className="text-3xl sm:text-4xl md:text-[48px] leading-[1.1] font-display font-extrabold text-ink mt-4 mb-5">
+          Six editions of
+          <br />
+          <span className="text-coral">Winter Coding Contest.</span>
+        </h2>
+        <p className="text-[16px] sm:text-[18px] text-dim text-center max-w-[600px] mx-auto w-full leading-relaxed">
+          A visual chronicle tracing the contest's evolution from intense virtual qualifiers to the high-stakes campus finale at VNRVJIET.
+        </p>
+      </div>
+
+      <div className="w-full relative py-8 group">
+        <div className="flex w-max items-center gap-8 sm:gap-10 md:gap-14 animate-marquee whitespace-nowrap hover:pause">
+          {/* First set */}
+          {photos.map((photo, i) => (
+            <div
+              key={"p1-" + i}
+              onClick={() => setSelectedPhoto(photo)}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  setSelectedPhoto(photo);
+                }
+              }}
+              aria-label={`View ${photo.caption}`}
+              className="relative overflow-hidden rounded-xl border-2 border-ink shadow-[4px_4px_0px_var(--ink)] bg-[#f5f3ee] h-[220px] sm:h-[280px] md:h-[320px] w-auto shrink-0 group/card transition-transform duration-300 hover:-translate-y-2 hover:shadow-[8px_8px_0px_var(--ink)] cursor-pointer"
+            >
+              <Image
+                src={photo.img}
+  alt={photo.alt}
+  width={1200}
+  height={900}
+  sizes="auto"
+  className="h-full w-auto max-w-none object-contain transition-transform duration-700 group-hover/card:scale-[1.02]"
+                priority={i < 3}
+                loading={i < 3 ? "eager" : "lazy"}
+              />
+
+              <div className="absolute bottom-5 sm:bottom-6 left-0 w-full flex justify-center px-4 opacity-0 group-hover/card:opacity-100 group-focus-visible/card:opacity-100 transition-all duration-300 pointer-events-none">
+                <div
+                  style={{
+                    paddingTop: "12px",
+                    paddingBottom: "12px",
+                    paddingLeft: "22px",
+                    paddingRight: "22px",
+                    letterSpacing: "normal",
+                  }}
+                  className="bg-white/95 backdrop-blur-md border-2 border-ink text-ink text-xs sm:text-[13px] font-bold uppercase rounded-full shadow-[4px_4px_0px_var(--ink)] text-center whitespace-nowrap leading-none inline-flex items-center justify-center"
+                >
+                  {photo.caption}
+                </div>
+              </div>
+            </div>
+          ))}
+          {/* Duplicate set for seamless loop */}
+          {photos.map((photo, i) => (
+            <div
+              key={"p2-" + i}
+              onClick={() => setSelectedPhoto(photo)}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  setSelectedPhoto(photo);
+                }
+              }}
+              aria-label={`View ${photo.caption}`}
+              className="relative overflow-hidden rounded-xl border-2 border-ink shadow-[4px_4px_0px_var(--ink)] bg-[#f5f3ee] h-[220px] sm:h-[280px] md:h-[320px] w-auto shrink-0 group/card transition-transform duration-300 hover:-translate-y-2 hover:shadow-[8px_8px_0px_var(--ink)] cursor-pointer"
+            >
+              <Image
+  src={photo.img}
+  alt={photo.alt}
+  width={1200}
+  height={900}
+  sizes="auto"
+  className="h-full w-auto max-w-none object-contain transition-transform duration-700 group-hover/card:scale-[1.02]"
+  loading="lazy"
+/>
+
+              <div className="absolute bottom-5 sm:bottom-6 left-0 w-full flex justify-center px-4 opacity-0 group-hover/card:opacity-100 group-focus-visible/card:opacity-100 transition-all duration-300 pointer-events-none">
+                <div
+                  style={{
+                    paddingTop: "14px",
+                    paddingBottom: "14px",
+                    paddingLeft: "32px",
+                    paddingRight: "32px",
+                    letterSpacing: "normal",
+                  }}
+                  className="bg-white/95 backdrop-blur-md border-2 border-ink text-ink text-xs sm:text-[13px] font-bold uppercase rounded-full shadow-[4px_4px_0px_var(--ink)] text-center whitespace-nowrap leading-none inline-flex items-center justify-center"
+                >
+                  {photo.caption}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Expanded Modal View on Image Click */}
+      {selectedPhoto && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/80 backdrop-blur-sm transition-opacity"
+          onClick={() => setSelectedPhoto(null)}
+          role="dialog"
+          aria-modal="true"
+          aria-label={selectedPhoto.caption}
+        >
+          <div
+            className="relative bg-white border-2 border-ink rounded-2xl shadow-[8px_8px_0px_var(--ink)] max-w-2xl w-full overflow-hidden flex flex-col"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close Button */}
+            <button
+              onClick={() => setSelectedPhoto(null)}
+              className="absolute top-3 right-3 z-10 w-9 h-9 border-2 border-ink rounded-lg bg-white shadow-[2px_2px_0px_var(--ink)] flex items-center justify-center font-bold text-ink hover:bg-[#f5f3ee] hover:text-coral active:translate-x-[1px] active:translate-y-[1px] transition-all cursor-pointer"
+              aria-label="Close modal"
+            >
+              ✕
+            </button>
+
+            {/* Expanded Image */}
+            <div className="relative w-full aspect-[16/10] sm:aspect-[16/9] bg-ink/5">
+              <Image
+                src={selectedPhoto.img}
+                alt={selectedPhoto.alt}
+                fill
+                sizes="(max-width: 768px) 90vw, 680px"
+                className="object-contain"
+                priority
+              />
+            </div>
+
+            {/* Expanded Caption with comfortable padding */}
+            <div className="!p-8 sm:!p-10 border-t-2 border-ink bg-[#faf9f6] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div>
+                <span className="inline-block text-[11px] font-mono font-bold tracking-widest text-coral uppercase bg-coral/10 border border-coral/20 rounded-full px-3 py-1 mb-2.5">
+                  ARCHIVE // WCC
+                </span>
+                <h4 className="font-display font-extrabold text-xl sm:text-2xl text-ink">
+                  {selectedPhoto.caption}
+                </h4>
+              </div>
+              <p className="text-sm sm:text-base text-dim max-w-xs font-medium">
+                {selectedPhoto.alt}
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+    </section>
+  );
+}
+
