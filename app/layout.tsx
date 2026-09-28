@@ -36,6 +36,7 @@ export const metadata: Metadata = {
     "ACM VNRVJIET presents Winter Coding Contest 6.0: two rounds, one campus finale, and a national challenge for India's sharpest problem-solvers. Round 1 is free on HackerEarth.",
   keywords: [
     "Winter Coding Contest",
+    "Winter Coding Contest 6.0",
     "WCC 6.0",
     "ACM VNRVJIET",
     "VNRVJIET",
