@@ -150,7 +150,7 @@ export default function StagesSection() {
                   <p className="text-justify">Register individually or with one teammate on Unstop. Round 1 is completely free for students across India.</p>
                   <div className="curved-date">DEADLINE — 11 OCT 2026 (EXT. 12 OCT)</div>
                   <div>
-                    <a className="map-link-btn" href="https://unstop.com" target="_blank" rel="noopener noreferrer">
+                    <a className="map-link-btn" href="https://unstop.com/o/xkq9yFv?lb=Vr9VXAuO&utm_medium=Share&utm_source=online_coding_challenge&utm_campaign=Acmcha18131" target="_blank" rel="noopener noreferrer">
                       REGISTER ON UNSTOP →
                     </a>
                   </div>
