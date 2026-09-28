@@ -31,9 +31,9 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "Winter Coding Contest 6.0 — Redesign Concept",
+  title: "Winter Coding Contest 6.0 | ACM VNRVJIET",
   description:
-    "A national algorithmic arena. Two rounds, one campus finale, and a pipeline built to find India's sharpest problem-solvers. Round 1 is 100% Free on HackerEarth.",
+    "ACM VNRVJIET presents Winter Coding Contest 6.0: two rounds, one campus finale, and a national challenge for India's sharpest problem-solvers. Round 1 is free on HackerEarth.",
   keywords: [
     "Winter Coding Contest",
     "WCC 6.0",
@@ -50,26 +50,33 @@ export const metadata: Metadata = {
   authors: [{ name: "ACM VNRVJIET Student Chapter", url: "https://vnrvjiet.acm.org" }],
   creator: "ACM VNRVJIET",
   publisher: "ACM VNRVJIET",
-  metadataBase: new URL("https://vnrvjiet.acm.org"),
+  metadataBase: new URL("https://wcc6.pages.dev"),
   alternates: {
     canonical: "/",
   },
   openGraph: {
     title: "Winter Coding Contest 6.0 | ACM VNRVJIET",
     description:
-      "A national algorithmic arena. Two rounds, one campus finale, and a pipeline built to find India's sharpest problem-solvers.",
-    url: "https://vnrvjiet.acm.org/wcc",
-    siteName: "ACM VNRVJIET WCC 6.0",
+      "ACM VNRVJIET presents Winter Coding Contest 6.0: two rounds, one campus finale, and a national challenge for India's sharpest problem-solvers.",
+    url: "https://wcc6.pages.dev/",
+    siteName: "Winter Coding Contest 6.0",
     images: [
       {
-        url: "/assets/images/poster_5_0.jpg",
-        width: 1080,
-        height: 1350,
-        alt: "Winter Coding Contest 6.0 Official Poster",
+        url: "/acm-vnrvjiet-logo.png",
+        width: 1024,
+        height: 1024,
+        alt: "ACM VNRVJIET logo",
       },
     ],
     locale: "en_IN",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Winter Coding Contest 6.0 | ACM VNRVJIET",
+    description:
+      "ACM VNRVJIET presents Winter Coding Contest 6.0: two rounds, one campus finale, and a national challenge for India's sharpest problem-solvers.",
+    images: ["/acm-vnrvjiet-logo.png"],
   },
   icons: {
     icon: "/assets/images/acm_logo.png",
