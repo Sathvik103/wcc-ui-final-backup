@@ -139,7 +139,7 @@ export function Navbar({ introComplete = true }: { introComplete?: boolean }) {
               <div className="pt-4 mt-3 border-t border-slate-200 w-full !pb-2">
                 <a
                   className="btn btn-solid w-full text-center py-3 text-xs sm:text-sm font-bold font-display uppercase tracking-wider block shadow-[3px_3px_0px_#1a1918]"
-                  href="https://unstop.com"
+                  href="https://unstop.com/o/xkq9yFv?lb=Vr9VXAuO&utm_medium=Share&utm_source=online_coding_challenge&utm_campaign=Acmcha18131"
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => setMobileMenuOpen(false)}
