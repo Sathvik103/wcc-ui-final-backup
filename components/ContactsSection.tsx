@@ -59,7 +59,7 @@ export default function ContactsSection() {
             <div className="pt-6 border-t-2 border-ink/10 flex items-center gap-3">
               <a
                 href="mailto:muralimohan_s@vnrvjiet.in"
-                className="text-[14px] sm:text-[15px] font-bold text-ink hover:text-coral transition-colors break-all"
+                className="!block !text-ink !opacity-100 text-[14px] sm:text-[15px] font-bold hover:text-coral transition-colors break-all"
               >
                 muralimohan_s@vnrvjiet.in
               </a>
@@ -89,14 +89,14 @@ export default function ContactsSection() {
 
                 <a
                   href="tel:8179354592"
-                  className="text-[14px] sm:text-[15px] font-mono font-bold text-ink hover:text-coral transition-colors"
+                  className="!block !text-ink !opacity-100 text-[14px] sm:text-[15px] font-mono font-bold hover:text-coral transition-colors"
                 >
                   8179354592
                 </a>
 
                 <a
                   href="mailto:mtejomurtula@gmail.com"
-                  className="text-[13px] sm:text-[14px] text-dim hover:text-coral transition-colors break-all"
+                  className="!block !text-dim !opacity-100 text-[13px] sm:text-[14px] hover:text-coral transition-colors break-all"
                 >
                   mtejomurtula@gmail.com
                 </a>
@@ -113,14 +113,14 @@ export default function ContactsSection() {
 
                 <a
                   href="tel:9618212285"
-                  className="text-[14px] sm:text-[15px] font-mono font-bold text-ink hover:text-coral transition-colors"
+                  className="!block !text-ink !opacity-100 text-[14px] sm:text-[15px] font-mono font-bold hover:text-coral transition-colors"
                 >
                   9618212285
                 </a>
 
                 <a
                   href="mailto:shreshta.gudipati1903@gmail.com"
-                  className="text-[13px] sm:text-[14px] text-dim hover:text-coral transition-colors break-all"
+                  className="!block !text-dim !opacity-100 text-[13px] sm:text-[14px] hover:text-coral transition-colors break-all"
                 >
                   shreshta.gudipati1903@gmail.com
                 </a>

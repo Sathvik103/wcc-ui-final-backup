@@ -42,7 +42,7 @@ export default function HeroSection({
           }}
         >
           <div className="eyebrow">
-            ACM VNRVJIET PRESENTS · SIXTH FLAGSHIP EDITION
+            ACM VNRVJIET PRESENTS
           </div>
 
           <h1 className="hero-title w-full font-extrabold uppercase">

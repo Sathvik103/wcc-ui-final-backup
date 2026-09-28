@@ -16,11 +16,21 @@ export function Navbar({ introComplete = true }: { introComplete?: boolean }) {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+  const handleMobileNav = (id: string) => {
+  setMobileMenuOpen(false);
+
+  requestAnimationFrame(() => {
+    document.getElementById(id)?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  });
+};
 
   return (
     <motion.nav
-      id="nav"
-      className={`${isSolid ? "solid" : ""}`}
+  id="nav"
+  className={`relative z-[100] ${isSolid ? "solid" : ""}`}
       initial={{ opacity: 0 }}
       animate={{ opacity: introComplete ? 1 : 0 }}
       transition={{ duration: 0.5 }}
@@ -88,48 +98,48 @@ export function Navbar({ introComplete = true }: { introComplete?: boolean }) {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2, ease: "easeInOut" }}
-            className="lg:hidden bg-white border-t-2 border-[#1a1918] mt-2.5 shadow-xl overflow-hidden"
+            className="lg:hidden relative z-[100] bg-white border-t-2 border-[#1a1918] mt-2.5 shadow-xl overflow-hidden"
           >
             <div className="wrap !px-6 sm:!px-8 py-10 pb-6 flex flex-col items-start w-full">
               <div className="flex flex-col gap-5 !py-5 w-full">
                 <a
                   href="#heritage"
-                  onClick={() => setMobileMenuOpen(false)}
+                  onClick={() => handleMobileNav("heritage")}
                   className="font-display font-bold text-[15px] text-[#1a1918] hover:text-[#ff5f40] hover:bg-[#f5f3ee] rounded-lg px-4 py-2.5 transition-colors block text-left w-full"
                 >
                   Evolution
                 </a>
                 <a
                   href="#archive"
-                  onClick={() => setMobileMenuOpen(false)}
+                  onClick={() => handleMobileNav("archive")}  
                   className="font-display font-bold text-[15px] text-[#1a1918] hover:text-[#ff5f40] hover:bg-[#f5f3ee] rounded-lg px-4 py-2.5 transition-colors block text-left w-full"
                 >
                   Archive
                 </a>
                 <a
                   href="#format"
-                  onClick={() => setMobileMenuOpen(false)}
+                  onClick={() => handleMobileNav("format")}
                   className="font-display font-bold text-[15px] text-[#1a1918] hover:text-[#ff5f40] hover:bg-[#f5f3ee] rounded-lg px-4 py-2.5 transition-colors block text-left w-full"
                 >
                   How It Works
                 </a>
                 <a
                   href="#prizes"
-                  onClick={() => setMobileMenuOpen(false)}
+                  onClick={() => handleMobileNav("prizes")}
                   className="font-display font-bold text-[15px] text-[#1a1918] hover:text-[#ff5f40] hover:bg-[#f5f3ee] rounded-lg px-4 py-2.5 transition-colors block text-left w-full"
                 >
                   Prizes
                 </a>
                 <a
                   href="#faq"
-                  onClick={() => setMobileMenuOpen(false)}
+                  onClick={() => handleMobileNav("faq")}
                   className="font-display font-bold text-[15px] text-[#1a1918] hover:text-[#ff5f40] hover:bg-[#f5f3ee] rounded-lg px-4 py-2.5 transition-colors block text-left w-full"
                 >
                   FAQ
                 </a>
                 <a
                   href="#sponsors"
-                  onClick={() => setMobileMenuOpen(false)}
+                  onClick={() => handleMobileNav("sponsors")}
                   className="font-display font-bold text-[15px] text-[#1a1918] hover:text-[#ff5f40] hover:bg-[#f5f3ee] rounded-lg px-4 py-2.5 transition-colors block text-left w-full"
                 >
                   Sponsors
